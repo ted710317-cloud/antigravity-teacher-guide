@@ -42,7 +42,7 @@
       <a class="nav-link" href="#ch3"><span class="nav-num">Ch 3</span>國語出題與作文發布</a>
       <a class="nav-link" href="#ch4"><span class="nav-num">Ch 4</span>說數學與上台發表影音批改</a>
       <a class="nav-link" href="#ch5"><span class="nav-num">Ch 5</span>社會 4F 反思與題庫匯出</a>
-      <a class="nav-link" href="#ch6"><span class="nav-num">Ch 6</span>互動教具與教材網站工坊</a>
+      <a class="nav-link" href="#ch6"><span class="nav-num">Ch 6</span>數學遊戲吧與開發提示詞攻略</a>
       <a class="nav-link" href="#ch7"><span class="nav-num">Ch 7</span>導師輔導紀錄與系統同步</a>
       <a class="nav-link" href="#ch8"><span class="nav-num">Ch 8</span>班級經營（存摺・點歌・作業盤點）</a>
       <a class="nav-link" href="#ch9"><span class="nav-num">Ch 9</span>技能複製、備份與資安守則</a>
@@ -65,6 +65,7 @@
         <div class="hero-meta">
           <div class="hero-stat">📦 4 大必裝 MCP 生態</div>
           <div class="hero-stat">🎓 11 支教學實戰技能</div>
+          <div class="hero-stat">🎮 8 套自研數學遊戲＋提示詞</div>
           <div class="hero-stat">🏫 3 大班級經營系統＋一鍵建立精靈</div>
           <div class="hero-stat">🔒 金鑰、密碼與學生隱私全面去敏</div>
           <a class="btn" style="background:#fff;color:#163a70;border:none;" href="./Antigravity教師實戰推廣手冊_新進國小洪偉朕老師.pdf" download>📥 下載精裝推廣手冊 (PDF)</a>
@@ -361,9 +362,132 @@
       <section class="chapter" id="ch6">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 06</span>
-          <h2>第 6 章｜教學實戰（四）：互動教具與班級教學網站工坊</h2>
-          <p class="chapter-lead">不需要會寫程式，用自然語言就能做出適合教室大屏與 iPad 的單檔互動教具。</p>
+          <h2>第 6 章｜教學實戰（四）：互動教具、「數學遊戲吧」與開發提示詞全攻略</h2>
+          <p class="chapter-lead">不用買商業軟體、免除教室斷網焦慮！看洪老師如何用 Antigravity 打造 8 套涵蓋低中高年級的離線互動數學遊戲，並直接帶走可複製的「開發提示詞（Prompt）公式」。</p>
         </div>
+
+        <h3>6.1 洪老師實戰開發：《朕的數學遊戲吧》八大線上互動遊戲</h3>
+        <p>所有遊戲皆採用純前端 <strong>HTML5 + Canvas + Web Audio API 合成音效</strong> 打造，免安裝、免帳號，存進隨身碟就能在教室大屏或 iPad 離線操作，並支援 Google 試算表班級英雄榜！歡迎直接點開試玩或分享給班上孩子：</p>
+        <p><a class="btn btn-primary" href="https://ted710317-cloud.github.io/-One/math.html" target="_blank" rel="noopener">👑 開啟「朕的數學遊戲吧」完整大廳 ↗</a></p>
+
+        <div class="math-game-grid">
+          <div class="math-game-card">
+            <div>
+              <span class="badge blue">高年級｜質因數分解</span>
+              <h4>🚀 因數保衛戰</h4>
+              <p>發射質數砲彈（2, 3, 5, 7...）進行短除法分解複合數母艦；誤射不可整除會彈刀並即時提醒，支援雙人連線對戰與 Google 試算表全班英雄榜。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/factor/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+
+          <div class="math-game-card">
+            <div>
+              <span class="badge blue">中高年級｜因數與整除</span>
+              <h4>🐉 貪吃因數龍</h4>
+              <p>操控神龍吞食正確因數！頂部展示櫃激勵「一個都不漏找」、誤吃非因數顯示餘數診斷、質數雙倍暴擊與四階神龍進化，支援平板滑動與虛擬十字鍵。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/factor-dragon/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+
+          <div class="math-game-card">
+            <div>
+              <span class="badge blue">中年級｜乘除逆運算</span>
+              <h4>💥 九九乘法表保衛戰</h4>
+              <p>同時訓練正向乘積與反向填空（<code class="inline">a × [ ] = c</code>），可自選 1～9 魔王段特訓，並依反應秒數產出「神速／熟練／建議加強」學習診斷履歷。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/multiplication/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+
+          <div class="math-game-card">
+            <div>
+              <span class="badge blue">低年級｜九九乘法</span>
+              <h4>🍭 糖果雨消消樂</h4>
+              <p>三消連鎖玩法＋「保證盤面必有解」演算法，內建具象化點子陣列提示與平板 Q 萌大尺寸果凍數字鍵盤，建立低年級乘法直覺。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/candy-multiplier/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+
+          <div class="math-game-card">
+            <div>
+              <span class="badge">高年級｜幾何實驗室</span>
+              <h4>⭕ 圓周率密碼實驗室</h4>
+              <p>六組生活實物探究！用「雙擋板夾圓」量直徑、滾動圓輪攤平圓周長、直徑尺排排看，讓學生親眼驗證圓周率常數約為 3.14。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/pi-discovery/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+
+          <div class="math-game-card">
+            <div>
+              <span class="badge">高年級｜公式推導</span>
+              <h4>📐 圓面積公式推導實驗室</h4>
+              <p>把圓等分成細小扇形，動畫重組為長方形或等腰三角形！透過化曲為直與約分消去，直觀證明「半徑 × 半徑 × 3.14」。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/circle-area/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+
+          <div class="math-game-card">
+            <div>
+              <span class="badge">高年級｜素養闖關</span>
+              <h4>🎯 圓面積大師探究實驗室</h4>
+              <p>結合長方形與金字塔三角形雙法對照、12 吋披薩大對決／灑水器生活情境模擬，以及 4 關階梯素養挑戰與教師板書詳解。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/circle-area-lab/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+
+          <div class="math-game-card">
+            <div>
+              <span class="badge">康軒六上｜速率單元</span>
+              <h4>🏃 認識速率互動實驗室</h4>
+              <p>對接康軒六上第 8 單元：短跑快慢比較、四車每小時平分刀（距離÷時間）、火車正比倍數表格與大換小單位換算階梯。</p>
+            </div>
+            <div><a class="btn" href="https://ted710317-cloud.github.io/-One/speed-lab/" target="_blank" rel="noopener">立即試玩 ↗</a></div>
+          </div>
+        </div>
+
+        <h3>6.2 給同事的《數學遊戲開發提示詞（Prompt）》黃金五要素</h3>
+        <p>為什麼同樣請 AI 寫遊戲，有些做出來只是陽春問答，洪老師做出來的卻像商業級教材？關鍵在於下指令時同時寫清楚這 <strong>5 個維度</strong>：</p>
+        <ol>
+          <li><strong>① 年級、課綱與核心迷思概念</strong>：講明要解決哪個單元（例：反向乘除填空、質因數分解、不遺漏成對找因數）。</li>
+          <li><strong>② 具體遊戲機制＋防挫折設計</strong>：套用學生熟悉的玩法（塔防、貪吃蛇、消消樂），並加入「必有解保證」或「無壓力自由練習模式」。</li>
+          <li><strong>③ 錯題即時教育診斷反饋</strong>：答錯不能只扣分！要像老師在旁邊提醒一樣跳出算理提示（例：<code class="inline">24 ÷ 5 = 4 餘 4，不能整除！</code>）。</li>
+          <li><strong>④ 平板觸控與離線零依賴規格</strong>：要求純前端 HTML/JS、觸控熱區加大、支援虛擬鍵盤／D-Pad、Web Audio API 合成音效（不外掛 MP3）。</li>
+          <li><strong>⑤ 課後診斷履歷與（選配）試算表排行</strong>：結算列出答錯／思考過久題目，或自動生成 Google Apps Script 串接全班英雄榜。</li>
+        </ol>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>💬 提示詞範本 A｜運算精熟型互動遊戲（可直接複製修改單元主題）</span>
+            <button class="copy-btn" data-copy-code>複製提示詞</button>
+          </div>
+          <pre>請幫我用純前端（HTML5 + CSS + 原生 JavaScript + Web Audio API 合成音效，零外部套件、可 100% 離線執行）開發一款給國小【中年級】練習【九九乘法反向填空，如 7 × [ ] = 56】的互動數學遊戲，需求如下：
+1. 【玩法與防挫折】：採用太空砲台射擊或消消樂玩法，支援「冒險闖關（分波次進階）」、「30秒極速挑戰」與「自由練習（無限生命＋自選想練的乘數）」三種模式。
+2. 【即時教育反饋】：答對時有粒子煙火與清脆音效；答錯時不要直接淘汰，而是彈出算理氣泡提示（例如：「7 × 6 = 42 ❌，再想想看！」），讓學生即時自我修正。
+3. 【平板與大屏友善】：支援電腦鍵盤數字鍵，以及 iPad 平板觸控大尺寸虛擬數字鍵盤（按鈕寬高 ≥ 48px）。
+4. 【學習診斷履歷】：每局結束後列出本局所有練習題目，依作答反應時間標記「神速（&lt;2秒）」、「熟練」與「建議加強」，方便老師檢視弱點。</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>💬 提示詞範本 B｜幾何公式探究互動實驗室（可直接複製修改數學單元）</span>
+            <button class="copy-btn" data-copy-code>複製提示詞</button>
+          </div>
+          <pre>請幫我製作一個適合教室電子白板投影、也適合學生 iPad 動手操作的「【國小六年級圓面積公式推導】互動探究實驗室」網頁：
+1. 【化抽象為視覺步驟】：設計 3 個漸進頁籤——「1. 動態切割展開（可拉動滑桿調整 8/16/32/64 等分，動畫呈現扇形拼成長方形與等腰三角形）」、「2. 生活情境應用（例如比較兩個小披薩 vs 一個大披薩哪個面積大）」、「3. 階梯挑戰題庫（含思考提示與教師板書詳解切換）」。
+2. 【畫面規格】：大字體高對比配色，所有滑桿與按鈕都要適合手指拖拉點擊，並確保計算數值 100% 正確。
+3. 【單檔部署】：請幫我做成方便直接發布到 GitHub Pages 或用瀏覽器離線開啟的靜態網頁架構。</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>💬 提示詞範本 C｜進階加值：幫現有遊戲接上「Google 試算表全班英雄榜」</span>
+            <button class="copy-btn" data-copy-code>複製提示詞</button>
+          </div>
+          <pre>請幫我為這套數學遊戲加上「全班跨平板即時英雄榜」功能，免租伺服器：
+1. 請另外產出一份 `google_apps_script.js` 後端範本（使用 LockService 防止全班同時送出成績時撞車，並保留每位學生的個人最高分）。
+2. 在遊戲前端加上 `config.js` 讀取雲端 API 網址，同時在「英雄榜彈窗」內做一個隱藏設定齒輪，讓其他老師只要貼上自己的 Apps Script 部署網址就能直接套用！</pre>
+        </div>
+
+        <h3>6.3 自動化生成教具網站之可複製技能</h3>
         <div data-skill-chapter="ch6"></div>
       </section>
 
