@@ -674,6 +674,39 @@ code.inline {
   margin-top: 14px;
 }
 
+.tool-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin: 18px 0;
+}
+
+.classroom-card {
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 14px;
+  padding: 22px 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.classroom-card.music {
+  border-left-color: #7c3aed;
+}
+
+.classroom-card.homework {
+  border-left-color: var(--accent);
+}
+
+.wizard-highlight {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px dashed var(--accent);
+  font-size: 14px;
+}
+
 /* Modal */
 .modal-backdrop {
   position: fixed;

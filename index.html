@@ -44,7 +44,8 @@
       <a class="nav-link" href="#ch5"><span class="nav-num">Ch 5</span>社會 4F 反思與題庫匯出</a>
       <a class="nav-link" href="#ch6"><span class="nav-num">Ch 6</span>互動教具與教材網站工坊</a>
       <a class="nav-link" href="#ch7"><span class="nav-num">Ch 7</span>導師輔導紀錄與系統同步</a>
-      <a class="nav-link" href="#ch8"><span class="nav-num">Ch 8</span>技能複製、備份與資安守則</a>
+      <a class="nav-link" href="#ch8"><span class="nav-num">Ch 8</span>班級經營（存摺・點歌・作業盤點）</a>
+      <a class="nav-link" href="#ch9"><span class="nav-num">Ch 9</span>技能複製、備份與資安守則</a>
 
       <div class="sidebar-section-title">快速篩選技能</div>
       <div style="padding: 0 8px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
@@ -64,6 +65,7 @@
         <div class="hero-meta">
           <div class="hero-stat">📦 4 大必裝 MCP 生態</div>
           <div class="hero-stat">🎓 11 支教學實戰技能</div>
+          <div class="hero-stat">🏫 3 大班級經營系統＋一鍵建立精靈</div>
           <div class="hero-stat">🔒 金鑰、密碼與學生隱私全面去敏</div>
           <a class="btn" style="background:#fff;color:#163a70;border:none;" href="./Antigravity教師實戰推廣手冊_新進國小洪偉朕老師.pdf" download>📥 下載精裝推廣手冊 (PDF)</a>
         </div>
@@ -329,9 +331,29 @@
       <section class="chapter" id="ch5">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 05</span>
-          <h2>第 5 章｜教學實戰（三）：社會科 4F 反思與題庫系統自動化</h2>
-          <p class="chapter-lead">讓 AI 成為精準抓出學習盲點的社會科助教，並安全串接網頁題庫建立自己的備課資料庫。</p>
+          <h2>第 5 章｜教學實戰（三）：社會科 4F 反思與題庫匯出（審題／AI 出題資料庫）</h2>
+          <p class="chapter-lead">讓 AI 成為精準抓出學習盲點的社會科助教，並透過 Chrome 自動匯出官方題庫，打造專屬自己的「審題與 AI 智慧出題資料庫」。</p>
         </div>
+
+        <div class="callout accent">
+          <span class="callout-title">🧠 洪老師實戰關鍵心法：把網頁題庫變成「AI 審題與出題資料庫」</span>
+          透過 Chrome DevTools MCP 從翰林雲端命題大師自動匯出依題型分檔的 Markdown（<code class="inline">.md</code>）題庫後，這些檔案就成為 Antigravity 最強大的在地參考資料庫：
+          <ul style="margin: 8px 0 0; padding-left: 20px;">
+            <li><strong>🔍 輔助段考審題健檢</strong>：把出好的考卷丟給 AI，請它對照匯出的題庫檢查「是否與歷屆重複」、「考點涵蓋是否平均」、「選項誘答有無爭議」。</li>
+            <li><strong>✍️ 精準 AI 變體出題</strong>：在對話中用 <code class="inline">@</code> 指定匯出的題庫 <code class="inline">.md</code> 檔，請 AI 嚴格參照課綱知識點與命題語氣，自動生成「素養閱讀題組」、「易錯觀念延伸題」或「補救教學複習卷」，不再天馬行空偏離教材！</li>
+          </ul>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>💬 匯出題庫後對 AI 下指令：審題 &amp; 智慧出題示範</span>
+            <button class="copy-btn" data-copy-code>複製指令</button>
+          </div>
+          <pre>請讀取我匯出的《社會第十一冊_選擇題.md》與《00_題庫總覽.md》資料庫：
+1.【審題模式】比對我附上的這次期中考初稿，幫我檢查哪些題目考點重複、語意不夠嚴謹，或四個選項中有誘答力不足的地方。
+2.【AI 出題模式】針對「能源發電困境」與「深偽詐騙」兩個概念，參考題庫風格幫我新編 5 題貼近生活情境的素養選擇題，並附上解析。</pre>
+        </div>
+
         <div data-skill-chapter="ch5"></div>
       </section>
 
@@ -364,11 +386,120 @@
       <section class="chapter" id="ch8">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 08</span>
-          <h2>第 8 章｜技能複製、雙向備份與推廣避坑清單</h2>
+          <h2>第 8 章｜教學實戰（六）：智慧班級經營工具箱（存摺・點歌・作業盤點）</h2>
+          <p class="chapter-lead">不只出考卷與批改作業，洪老師更用 Antigravity 親手打造了三套教室天天在用的班級經營網頁系統，並為同事做好「免寫程式一鍵建立精靈」，點開連結就能複製屬於自己班級的版本！</p>
+        </div>
+
+        <div class="tool-showcase-grid">
+          <!-- 1. 班級電子存摺 -->
+          <article class="classroom-card">
+            <div class="skill-top">
+              <div class="skill-title-wrap">
+                <div class="skill-icon">🪙</div>
+                <div>
+                  <h4 class="skill-title">1. 班級電子存摺（羚藝汽泡水電子存摺）</h4>
+                  <div class="skill-id">架構：GitHub Pages 前端 ＋ Google Apps Script 純 JSON API 試算表後端</div>
+                </div>
+              </div>
+              <div class="skill-badges">
+                <span class="badge">班級獎勵制度</span>
+                <span class="badge blue">含一鍵建立精靈</span>
+              </div>
+            </div>
+            <p><strong>💡 解決的班級經營痛點：</strong>紙本榮譽卡容易遺失、算點數發薪水耗時，傳統 Google Apps Script 網頁又常遇到多帳號登入出現 404 的問題。</p>
+            <ul>
+              <li><strong>全班卡片與明細查詢</strong>：首頁即時呈現全班點數與幹部職稱，學生點擊自己座號就能查詢每一筆加扣點紀錄。</li>
+              <li><strong>教師端高效管理</strong>：支援單一／批量加扣點、設定幹部薪水週期、一鍵批次發薪與匯出繁體中文 CSV 清冊（管理密碼置於後端驗證，不暴露在前端）。</li>
+            </ul>
+            <div class="wizard-highlight">
+              <strong>🧙‍♂️ 同事免寫程式一鍵套用：</strong>洪老師已製作好「<strong>班級電子存摺・教師一鍵建立精靈</strong>」，其他老師免申請 GitHub、只需複製一份 Google 試算表，3 分鐘即可擁有自己班級的專屬存摺與 QR Code！
+            </div>
+            <div class="skill-actions">
+              <a class="btn btn-primary" href="https://ted710317-cloud.github.io/-One/sparkling-passbook/setup.html" target="_blank" rel="noopener">🧙‍♂️ 開啟班級存摺・一鍵建立精靈 ↗</a>
+              <a class="btn" href="https://ted710317-cloud.github.io/-One/sparkling-passbook/" target="_blank" rel="noopener">👀 預覽示範版電子存摺 ↗</a>
+            </div>
+          </article>
+
+          <!-- 2. 班級雲端點歌軟體 -->
+          <article class="classroom-card music">
+            <div class="skill-top">
+              <div class="skill-title-wrap">
+                <div class="skill-icon">🎵</div>
+                <div>
+                  <h4 class="skill-title">2. 班級雲端 YouTube 點歌坊（教室點歌軟體）</h4>
+                  <div class="skill-id">架構：大螢幕播放端 ＋ 學生手機掃碼點歌端 ＋ 老師行動遙控後台（MQTT 即時同步）</div>
+                </div>
+              </div>
+              <div class="skill-badges">
+                <span class="badge">課間氛圍營造</span>
+                <span class="badge blue">跨裝置即時同步</span>
+              </div>
+            </div>
+            <p><strong>💡 解決的班級經營痛點：</strong>下課、午休打掃或同樂會放音樂時，學生搶講台電腦點歌容易吵鬧，且常點到 10 小時循環或版權受限影片造成播放卡死。</p>
+            <ul>
+              <li><strong>雙端即時分離</strong>：投影大螢幕（<code class="inline">player.html</code>）自動產生動態 QR Code，學生拿平板／手機掃碼（<code class="inline">request.html</code>）免登入即可點播並附上「給全班的點播寄語」。</li>
+              <li><strong>教室守門員機制</strong>：自動限制歌曲時長（預設 6 分鐘）、限制每人同時排隊 2 首、過濾重複歌；遇版權受限禁止嵌入的 MV 會於 3 秒內自動跳下一首，絕不卡場。</li>
+              <li><strong>民主互動與老師遙控</strong>：支援同學對喜歡的歌按讚（👍）優先插播，老師也能用手機登入行動後台遠端切歌或開啟先審核後播放。</li>
+            </ul>
+            <div class="skill-actions">
+              <a class="btn btn-primary" href="https://ted710317-cloud.github.io/607sing/" target="_blank" rel="noopener">🎵 開啟班級點歌坊入口頁 ↗</a>
+              <a class="btn" href="https://ted710317-cloud.github.io/607sing/player.html" target="_blank" rel="noopener">🖥️ 教室大螢幕播放端 ↗</a>
+              <a class="btn" href="https://ted710317-cloud.github.io/607sing/request.html" target="_blank" rel="noopener">📱 學生點歌端 ↗</a>
+            </div>
+          </article>
+
+          <!-- 3. 盤點作業網頁 -->
+          <article class="classroom-card homework">
+            <div class="skill-top">
+              <div class="skill-title-wrap">
+                <div class="skill-icon">📋</div>
+                <div>
+                  <h4 class="skill-title">3. 班級作業佈告欄（極速盤點作業網頁）</h4>
+                  <div class="skill-id">架構：純前端單頁應用 ＋ LocalStorage 離線存檔 ＋（選配）Padlet 聯絡簿自動同步 / Firebase 雲端</div>
+                </div>
+              </div>
+              <div class="skill-badges">
+                <span class="badge">作業收繳盤點</span>
+                <span class="badge blue">含一鍵建立精靈</span>
+              </div>
+            </div>
+            <p><strong>💡 解決的班級經營痛點：</strong>每天早自習與下課組長收作業逐一畫記太花時間，全班一直問「還有誰沒交？」，老師還要手動整理未交名單傳給家長群組。</p>
+            <ul>
+              <li><strong>極速反向點選</strong>：預設全班皆「已交（綠燈）」，組長上台只需點選 1～2 位未交同學（紅燈 ❌），3 秒完成登記！</li>
+              <li><strong>晨間請假鎖定與聯絡簿同步</strong>：可先標註請假同學避免誤記；亦支援自動同步 Padlet 聯絡簿解析當日應交作業項目。</li>
+              <li><strong>黑板大看板＋全齊煙火特效</strong>：全螢幕投影讓後排同學一目了然；當某科 100% 繳齊時觸發滿版彩帶煙火 🎉，並可一鍵複製 LINE 催繳通知文字。</li>
+            </ul>
+            <div class="wizard-highlight">
+              <strong>🧙‍♂️ 同事免寫程式一鍵套用：</strong>洪老師同樣製作了「<strong>班級作業佈告欄・一鍵建立精靈</strong>」，只要 3 步驟輸入班級座號與設定，就能立刻產出專屬自己班級的作業盤點看板！
+            </div>
+            <div class="skill-actions">
+              <a class="btn btn-accent" href="https://ted710317-cloud.github.io/607-homework-board/wizard.html" target="_blank" rel="noopener">🧙‍♂️ 開啟盤點作業・一鍵建立精靈 ↗</a>
+              <a class="btn" href="https://ted710317-cloud.github.io/607-homework-board/" target="_blank" rel="noopener">👀 預覽線上作業佈告欄 ↗</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>💬 給同事的延伸應用：請 Antigravity 幫你客製專屬班級經營網頁的提示詞範本</span>
+            <button class="copy-btn" data-copy-code>複製提示詞</button>
+          </div>
+          <pre>請幫我設計一個給國小班級電子白板使用的「班級經營工具」單頁網站（HTML/CSS/JS），需求如下：
+1. 班級共 26 位學生，按鈕與座號方塊要大且適合觸控。
+2. 資料預設儲存在瀏覽器 LocalStorage，斷網也不會遺失，並提供匯出 CSV 備份功能。
+3. 操作點擊時加上柔和提示音效，全班達成目標時要有鼓勵動畫！</pre>
+        </div>
+      </section>
+
+      <!-- Chapter 9 -->
+      <section class="chapter" id="ch9">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 09</span>
+          <h2>第 9 章｜技能複製、雙向備份與推廣避坑清單</h2>
           <p class="chapter-lead">讓校內每位老師都能在 3 分鐘內複製並啟用這套教學技能庫。</p>
         </div>
 
-        <h3>8.1 同事如何把本手冊的技能複製到自己的電腦？</h3>
+        <h3>9.1 同事如何把本手冊的技能複製到自己的電腦？</h3>
         <div class="grid-2">
           <div class="info-card">
             <h4>步驟一：找到技能存放資料夾</h4>
@@ -382,7 +513,7 @@
           </div>
         </div>
 
-        <h3>8.2 校內社群推廣避坑清單（FAQ）</h3>
+        <h3>9.2 校內社群推廣避坑清單（FAQ）</h3>
         <div class="table-wrap">
           <table>
             <thead>
@@ -412,7 +543,7 @@
           </table>
         </div>
 
-        <div data-skill-chapter="ch8"></div>
+        <div data-skill-chapter="ch9"></div>
       </section>
 
       <footer class="footer">

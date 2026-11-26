@@ -343,7 +343,7 @@ description: 臺南市國小輔導系統（https://assist.tn.edu.tw）線上登�
   },
   {
     id: "skills-backup",
-    chapter: "ch8",
+    chapter: "ch9",
     category: "系統與分享",
     icon: "🛡️",
     name: "技能庫全自動雙向備份與分享打包",
