@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Antigravity 教師實戰推廣手冊｜新進國小 洪偉朕老師</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <button class="btn menu-toggle" id="menuToggle" aria-label="開啟目錄">☰</button>
+      <div class="brand-badge">AG</div>
+      <div class="brand-text">
+        <h1>Google Antigravity 教師實戰推廣手冊</h1>
+        <span>新進國小 洪偉朕老師 實戰分享與教學技能庫</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="globalSearch" placeholder="搜尋章節、MCP 或技能..." />
+      </div>
+      <button class="btn" id="themeToggle">🌙 護眼深色</button>
+      <a class="btn btn-primary" href="./Antigravity教師實戰推廣手冊_新進國小洪偉朕老師.pdf" download>⬇️ 下載 PDF 手冊</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section-title">手冊導覽目錄</div>
+      <a class="nav-link active" href="#overview"><span class="nav-num">總覽</span>手冊導讀與技能地圖</a>
+      <a class="nav-link" href="#ch1"><span class="nav-num">Ch 1</span>認識 Antigravity 與安裝入門</a>
+      <a class="nav-link" href="#ch2"><span class="nav-num">Ch 2</span>必裝 MCP 與外掛設定攻略</a>
+      <a class="nav-link" href="#ch3"><span class="nav-num">Ch 3</span>國語出題與作文發布</a>
+      <a class="nav-link" href="#ch4"><span class="nav-num">Ch 4</span>說數學與上台發表影音批改</a>
+      <a class="nav-link" href="#ch5"><span class="nav-num">Ch 5</span>社會 4F 反思與題庫匯出</a>
+      <a class="nav-link" href="#ch6"><span class="nav-num">Ch 6</span>互動教具與教材網站工坊</a>
+      <a class="nav-link" href="#ch7"><span class="nav-num">Ch 7</span>導師輔導紀錄與系統同步</a>
+      <a class="nav-link" href="#ch8"><span class="nav-num">Ch 8</span>技能複製、備份與資安守則</a>
+
+      <div class="sidebar-section-title">快速篩選技能</div>
+      <div style="padding: 0 8px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+        本手冊所有 <strong>API 金鑰、密碼與學生個資皆已完全去敏隱藏</strong>，同事老師可直接複製 <code class="inline">SKILL.md</code> 範本並填入個人環境設定即可啟用。
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Hero -->
+      <section class="hero" id="overview">
+        <div class="hero-tag">🏫 臺南市立新進國民小學｜教學現場 AI 實戰推廣</div>
+        <h2>從「問答聊天」進化為「會動手幫忙批改、出卷與填表的 AI 助教」</h2>
+        <p>
+          這份指南整理自 <strong>新進國小 洪偉朕老師</strong> 在國小教學與導師行政現場的真實使用經驗。從 Antigravity 基礎安裝、必裝 MCP 工具箱設定，到 <strong>11 套已實際打磨完成的教學專屬技能（Skills）</strong>，歡迎校內外老師直接複製範本、立即應用在自己的班級！
+        </p>
+        <div class="hero-meta">
+          <div class="hero-stat">📦 4 大必裝 MCP 生態</div>
+          <div class="hero-stat">🎓 11 支教學實戰技能</div>
+          <div class="hero-stat">🔒 金鑰、密碼與學生隱私全面去敏</div>
+          <a class="btn" style="background:#fff;color:#163a70;border:none;" href="./Antigravity教師實戰推廣手冊_新進國小洪偉朕老師.pdf" download>📥 下載精裝推廣手冊 (PDF)</a>
+        </div>
+      </section>
+
+      <!-- Overview Matrix -->
+      <section class="chapter">
+        <div class="chapter-header">
+          <span class="chapter-kicker">QUICK MAP</span>
+          <h2>教師現場 11 套實戰技能總覽地圖</h2>
+          <p class="chapter-lead">您可以依授課領域或行政需求快速篩選，或點擊表格右側直接跳轉至對應章節複製技能範本。</p>
+        </div>
+
+        <div class="filter-bar" id="skillFilterBar">
+          <button class="chip active" data-filter="all">全部技能 (11)</button>
+          <button class="chip" data-filter="語文評量">📚 語文評量 (2)</button>
+          <button class="chip" data-filter="影音批改">🎙️ 影音批改 (3)</button>
+          <button class="chip" data-filter="社會與題庫">🌏 社會與題庫 (2)</button>
+          <button class="chip" data-filter="互動教具">🧪 互動教具 (1)</button>
+          <button class="chip" data-filter="導師行政">📋 導師行政 (2)</button>
+          <button class="chip" data-filter="系統與分享">🛡️ 系統與分享 (1)</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>技能名稱與資料夾 ID</th>
+                <th>教學分類</th>
+                <th>常用喚醒指令 / 關鍵字</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="skillMatrixBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Chapter 1 -->
+      <section class="chapter" id="ch1">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 01</span>
+          <h2>第 1 章｜認識 Antigravity 與零基礎安裝指南</h2>
+          <p class="chapter-lead">五分鐘看懂 Antigravity 跟一般網頁版 ChatGPT / Gemini 有何不同，並完成電腦端安裝。</p>
+        </div>
+
+        <h3>1.1 為什麼老師需要 Google Antigravity？</h3>
+        <p>網頁版聊天 AI 只能「給你文字建議」，老師還是得自己開 Word 調格式、一筆一筆下載學生影片、逐字把評語貼回 Padlet 或校務系統。<strong>Google Antigravity</strong> 是「代理型（Agentic）AI 工作平台」，它能讀懂老師設定的教學規準（Skills），並直接呼叫工具（MCP）幫您完成檔案整理、排版轉檔、網頁除錯與批次資料處理。</p>
+
+        <div class="diagram-box">
+          <svg width="780" height="165" viewBox="0 0 780 165" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Antigravity 教師工作流架構圖">
+            <rect x="10" y="38" width="160" height="86" rx="12" fill="#eaf1ff" stroke="#1a56db" stroke-width="2"/>
+            <text x="90" y="72" text-anchor="middle" font-size="15" font-weight="700" fill="#163a70">👩‍🏫 老師一句話指令</text>
+            <text x="90" y="96" text-anchor="middle" font-size="12" fill="#334155">貼照片 / 給網址 / 說需求</text>
+
+            <line x1="170" y1="81" x2="215" y2="81" stroke="#1a56db" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+            <rect x="218" y="25" width="180" height="112" rx="14" fill="#1a56db"/>
+            <text x="308" y="64" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">🧠 Antigravity</text>
+            <text x="308" y="88" text-anchor="middle" font-size="12" fill="#dbeafe">理解意圖 × 規劃步驟</text>
+            <text x="308" y="108" text-anchor="middle" font-size="12" fill="#dbeafe">多模態看圖聽影判讀</text>
+
+            <line x1="398" y1="58" x2="450" y2="45" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
+            <line x1="398" y1="104" x2="450" y2="117" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+            <rect x="454" y="10" width="310" height="62" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="2"/>
+            <text x="609" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">📘 Skills（專屬教學 SOP）</text>
+            <text x="609" y="56" text-anchor="middle" font-size="12" fill="#334155">國語考卷規格 / 4F 規準 / 說數學防誤發</text>
+
+            <rect x="454" y="88" width="310" height="62" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+            <text x="609" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">🔌 MCP &amp; Plugins（外接雙手）</text>
+            <text x="609" y="134" text-anchor="middle" font-size="12" fill="#334155">Padlet / Chrome 瀏覽器 / Google 雲端 / Word</text>
+
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 z" fill="#1a56db"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <h3>1.2 安裝步驟與介面選擇</h3>
+        <div class="grid-3">
+          <div class="info-card">
+            <h4>🖥️ Antigravity 2.0 桌面版（首推）</h4>
+            <p>獨立桌面應用程式，左側有對話紀錄、工作區專案、技能與 MCP 管理中心，最適合一般老師日常備課與批改使用。</p>
+          </div>
+          <div class="info-card">
+            <h4>💻 Antigravity IDE</h4>
+            <p>AI 原生程式編輯器（類似 VS Code 介面），適合想要同時修改 HTML 互動教具或檢視腳本程式碼的老師。</p>
+          </div>
+          <div class="info-card">
+            <h4>⌨️ Antigravity CLI（<code class="inline">agy</code>）</h4>
+            <p>輕量終端機介面，輸入 <code class="inline">agy</code> 即可快速啟動對話與執行指令，適合進階自動化排程。</p>
+          </div>
+        </div>
+
+        <h4>📥 五分鐘安裝啟動流程</h4>
+        <ol>
+          <li>前往 Google Antigravity 官方頁面（<code class="inline">https://antigravity.google</code>）下載對應作業系統安裝檔（Windows / macOS）。</li>
+          <li>安裝後開啟應用程式並使用 Google 帳號完成登入授權。</li>
+          <li>建議同時準備 <strong>Python 3.10+</strong> 與 <strong>Node.js 18+</strong>（許多好用的 MCP 工具與 Word/PDF 轉檔腳本皆依賴這兩個基礎環境）。</li>
+          <li>打開一個空白資料夾作為您的「工作區（Workspace）」，例如 <code class="inline">D:\教學AI工作區</code>，即可開始對話！</li>
+        </ol>
+
+        <h3>1.3 三個馬上變高手的介面小技巧</h3>
+        <ul>
+          <li><strong>斜線指令（<code class="inline">/</code>）</strong>：在對話框輸入 <code class="inline">/</code>，就能喚出系統內建模式（如 <code class="inline">/plan</code> 先規劃再執行）或您安裝的教學技能（如 <code class="inline">/chinese-quiz</code>、<code class="inline">/發布作文</code>）。</li>
+          <li><strong>拖曳媒體直接問</strong>：把國語課本照片、學生手寫 PDF 或「說數學」影片直接拖進對話框，AI 會直接讀取畫面與聲音。</li>
+          <li><strong>權限安全控制（Settings）</strong>：初次使用建議將終端機指令設為「執行前詢問（Request Review）」，AI 在寫入重要檔案或對外發文前都會先請您點確認。</li>
+        </ul>
+      </section>
+
+      <!-- Chapter 2 -->
+      <section class="chapter" id="ch2">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 02</span>
+          <h2>第 2 章｜替 AI 裝上萬用雙手：必裝 MCP 與外掛設定攻略</h2>
+          <p class="chapter-lead">MCP（Model Context Protocol）是讓 Antigravity 連上 Padlet、Chrome 瀏覽器、NotebookLM 與 Google 雲端硬碟的關鍵橋樑。</p>
+        </div>
+
+        <h3>2.1 洪偉朕老師實測必裝的核心 MCP 清單</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>MCP / 外掛名稱</th>
+                <th>對應工具與套件</th>
+                <th>在教學現場幫老師做什麼？</th>
+                <th>需額外申請金鑰嗎？</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Padlet MCP</strong></td>
+                <td><code class="inline">padlet-mcp@latest</code></td>
+                <td>自動建立班級分欄看板、讀取學生貼文與影音附件、批次發布評語留言。</td>
+                <td>需要個人 <code class="inline">PADLET_API_KEY</code></td>
+              </tr>
+              <tr>
+                <td><strong>Chrome DevTools MCP</strong></td>
+                <td><code class="inline">chrome-devtools-mcp@latest --autoConnect</code></td>
+                <td>連線老師桌面已登入的 Chrome 瀏覽器，擷取翰林命題大師題庫或同步臺南市輔導系統。</td>
+                <td>免金鑰（需開啟 Chrome 偵錯）</td>
+              </tr>
+              <tr>
+                <td><strong>NotebookLM MCP</strong></td>
+                <td><code class="inline">notebooklm-mcp</code></td>
+                <td>直接查詢老師建在 NotebookLM 裡的研習講義、課程計畫與教學筆記。</td>
+                <td>透過個人 Google 帳號驗證</td>
+              </tr>
+              <tr>
+                <td><strong>Google Workspace 外掛</strong></td>
+                <td>Plugins：gdocs / gsheets / gslides / gdrive / gcalendar / gmail</td>
+                <td>直接在對話中建立與更新 Google 文件、試算表、簡報、日曆行事曆與雲端硬碟。</td>
+                <td>於 Plugins 介面一鍵登入授權</td>
+              </tr>
+              <tr>
+                <td><strong>視覺設計與網站部署外掛</strong></td>
+                <td>Plugins：canva / netlify / vercel / firebase</td>
+                <td>結合 Canva 進行海報簡報審閱，或將做好的互動教具網站直接部署上線。</td>
+                <td>依平台帳號授權連結</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2.2 安全設定 <code class="inline">mcp_config.json</code>（已隱藏個人金鑰範本）</h3>
+        <p>打開使用者設定檔 <code class="inline">%USERPROFILE%\.gemini\config\mcp_config.json</code>（Windows 可於檔案總管網址列輸入此路徑直達），貼入以下架構並將 <code class="inline">&lt;...&gt;</code> 替換成您自己的金鑰與程式路徑即可：</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>mcp_config.json（安全去敏範本）</span>
+            <button class="copy-btn" data-copy-code>複製設定檔</button>
+          </div>
+          <pre>{
+  "mcpServers": {
+    "padlet": {
+      "command": "npx.cmd",
+      "args": ["-y", "padlet-mcp@latest"],
+      "env": {
+        "PADLET_API_KEY": "&lt;請填入您自己的_PADLET_API_KEY&gt;"
+      }
+    },
+    "chrome-devtools": {
+      "command": "npx.cmd",
+      "args": ["-y", "chrome-devtools-mcp@latest", "--autoConnect"]
+    },
+    "notebooklm": {
+      "command": "&lt;您的PythonScripts路徑&gt;\\notebooklm-mcp.exe",
+      "args": []
+    }
+  }
+}</pre>
+        </div>
+
+        <h3>2.3 如何讓 AI 連線您桌面上的 Chrome 瀏覽器？</h3>
+        <ol>
+          <li>在桌面 Chrome 瀏覽器網址列輸入 <code class="inline">chrome://inspect/#remote-debugging</code>，勾選 <strong>Enable remote debugging</strong>（允許遠端偵錯）。</li>
+          <li>或建立一個捷徑批次檔，以偵錯埠 <code class="inline">9222</code> 啟動 Chrome 專屬工作視窗。</li>
+          <li><strong>資安優勢</strong>：所有需要校務帳密、OpenID 或驗證碼的網站（如命題大師、臺南市輔導系統），都由<strong>老師本人親自在 Chrome 完成登入</strong>，AI 完全不需要也不會紀錄您的密碼！</li>
+        </ol>
+
+        <div class="callout danger">
+          <span class="callout-title">🔐 分享給同事前最重要的安全原則</span>
+          切勿把自己的 <code class="inline">mcp_config.json</code> 或 <code class="inline">.env</code> 檔案直接傳給別人！裡面包含您個人的 <code class="inline">PADLET_API_KEY</code> 與 <code class="inline">GEMINI_API_KEY</code>。正確做法是只分享「技能資料夾（Skills）」與「空白佔位符範本」，讓每位老師申請並填入自己的金鑰。
+        </div>
+      </section>
+
+      <!-- Chapter 3 -->
+      <section class="chapter" id="ch3">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 03</span>
+          <h2>第 3 章｜教學實戰（一）：國語出題、作文發布與數位評量</h2>
+          <p class="chapter-lead">把反覆調格式的 Word 考卷排版與作文診斷發還作業，交給標準化技能自動化執行。</p>
+        </div>
+        <p>在國小國語科教學中，洪老師最常面臨兩個耗時場景：一是每課上完都要出符合傳統「由右至左直書」與「田字格＋注音欄」規格的隨堂小考；二是作文批改完後，家長在手機上經常無法直接預覽 Word 檔。透過下面兩支技能，就能把繁瑣排版變成一鍵完成：</p>
+        <div data-skill-chapter="ch3"></div>
+      </section>
+
+      <!-- Chapter 4 -->
+      <section class="chapter" id="ch4">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 04</span>
+          <h2>第 4 章｜教學實戰（二）：數學與上台發表的「多模態影音批改」管線</h2>
+          <p class="chapter-lead">結合 Padlet ＋ Gemini 多模態（同時看螢幕筆跡＋聽語音），並建立「先審核、後發布」防誤發機制。</p>
+        </div>
+
+        <div class="diagram-box">
+          <svg width="780" height="120" viewBox="0 0 780 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="影音批改人機共審流程圖">
+            <rect x="10" y="25" width="140" height="68" rx="10" fill="#eaf1ff" stroke="#1a56db" stroke-width="1.8"/>
+            <text x="80" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#163a70">1. 下載 Padlet</text>
+            <text x="80" y="74" text-anchor="middle" font-size="12" fill="#334155">.mov / .mp4 影片</text>
+
+            <text x="166" y="64" font-size="18" font-weight="700" fill="#1a56db">→</text>
+
+            <rect x="190" y="25" width="160" height="68" rx="10" fill="#eaf1ff" stroke="#1a56db" stroke-width="1.8"/>
+            <text x="270" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#163a70">2. 多模態 AI 診斷</text>
+            <text x="270" y="74" text-anchor="middle" font-size="12" fill="#334155">時間軸逐字稿＋規準判讀</text>
+
+            <text x="366" y="64" font-size="18" font-weight="700" fill="#1a56db">→</text>
+
+            <rect x="390" y="25" width="175" height="68" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/>
+            <text x="477" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">3. 教師審核把關</text>
+            <text x="477" y="74" text-anchor="middle" font-size="12" fill="#334155">HTML 審核表 / Word 總表</text>
+
+            <text x="581" y="64" font-size="18" font-weight="700" fill="#0f766e">→</text>
+
+            <rect x="605" y="25" width="165" height="68" rx="10" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.8"/>
+            <text x="687" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">4. 一鍵批次留言</text>
+            <text x="687" y="74" text-anchor="middle" font-size="12" fill="#334155">核可後安全回填 Padlet</text>
+          </svg>
+        </div>
+
+        <div class="callout accent">
+          <span class="callout-title">🎯 實戰經驗關鍵提醒：為什麼要設定「無聲重錄」與「可聽度門檻」？</span>
+          多模態 AI 的耳朵太靈敏，常會把教室裡幾乎聽不見的「蚊子音」也降噪聽出來並給高分！洪老師在設計這兩支技能時，特別寫進了嚴格的教育紅線：<strong>說數學沒錄到聲音直接 1 顆星重錄；上台發表台下聽不清就直接鎖定總分天花板</strong>，確保 AI 批改真正貼合現場教學要求。
+        </div>
+        <div data-skill-chapter="ch4"></div>
+      </section>
+
+      <!-- Chapter 5 -->
+      <section class="chapter" id="ch5">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 05</span>
+          <h2>第 5 章｜教學實戰（三）：社會科 4F 反思與題庫系統自動化</h2>
+          <p class="chapter-lead">讓 AI 成為精準抓出學習盲點的社會科助教，並安全串接網頁題庫建立自己的備課資料庫。</p>
+        </div>
+        <div data-skill-chapter="ch5"></div>
+      </section>
+
+      <!-- Chapter 6 -->
+      <section class="chapter" id="ch6">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 06</span>
+          <h2>第 6 章｜教學實戰（四）：互動教具與班級教學網站工坊</h2>
+          <p class="chapter-lead">不需要會寫程式，用自然語言就能做出適合教室大屏與 iPad 的單檔互動教具。</p>
+        </div>
+        <div data-skill-chapter="ch6"></div>
+      </section>
+
+      <!-- Chapter 7 -->
+      <section class="chapter" id="ch7">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 07</span>
+          <h2>第 7 章｜教學實戰（五）：導師輔導行政與校務系統智慧同步</h2>
+          <p class="chapter-lead">從一句口語隨筆，到客觀專業紀錄、Excel 存檔，再透過人機協作安全同步進臺南市輔導系統。</p>
+        </div>
+
+        <div class="callout warn">
+          <span class="callout-title">🛡️ 資安與隱私最高準則：人機協作不破密碼、不碰個資雲端</span>
+          在「臺南市輔導系統」或任何校務行政系統同步時，<strong>絕不交由 AI 儲存帳號密碼或破解驗證碼</strong>。務必由老師本人於 Chrome 完成 OpenID 與圖形驗證碼登入後，再交棒給 AI 協助比對重複紀錄與填寫欄位，且所有學生名單與 Excel 僅存放在老師個人安全硬碟中。
+        </div>
+        <div data-skill-chapter="ch7"></div>
+      </section>
+
+      <!-- Chapter 8 -->
+      <section class="chapter" id="ch8">
+        <div class="chapter-header">
+          <span class="chapter-kicker">CHAPTER 08</span>
+          <h2>第 8 章｜技能複製、雙向備份與推廣避坑清單</h2>
+          <p class="chapter-lead">讓校內每位老師都能在 3 分鐘內複製並啟用這套教學技能庫。</p>
+        </div>
+
+        <h3>8.1 同事如何把本手冊的技能複製到自己的電腦？</h3>
+        <div class="grid-2">
+          <div class="info-card">
+            <h4>步驟一：找到技能存放資料夾</h4>
+            <p>Antigravity 會自動讀取您電腦中的全域技能目錄：</p>
+            <p><code class="inline">%USERPROFILE%\.gemini\config\skills\</code></p>
+            <p>只要在裡面建立一個資料夾（例如 <code class="inline">chinese-quiz-generator</code>），並放入一個名為 <code class="inline">SKILL.md</code> 的檔案即可生效。</p>
+          </div>
+          <div class="info-card">
+            <h4>步驟二：貼上範本並重啟</h4>
+            <p>在本網站任一張技能卡片點擊 <strong>「📄 複製 / 下載 SKILL.md 範本」</strong>，存進對應資料夾後重新開啟 Antigravity，就能在對話框輸入斜線指令喚醒它；進階自動化腳本（<code class="inline">scripts/</code>）亦可請 AI 依 <code class="inline">SKILL.md</code> 規範現場幫您生成！</p>
+          </div>
+        </div>
+
+        <h3>8.2 校內社群推廣避坑清單（FAQ）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>常見問題</th>
+                <th>洪老師實戰解法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>同事電腦沒有我的 <code class="inline">D:\Google 雲端硬碟</code> 路徑怎麼辦？</strong></td>
+                <td>開啟 <code class="inline">SKILL.md</code> 後，直接對 Antigravity 說：「幫我把這支技能的預設資料夾改成我桌面上的某個資料夾」，AI 會自己幫您改好設定！</td>
+              </tr>
+              <tr>
+                <td><strong>AI 批改完直接發到 Padlet，發現有誤判怎麼辦？</strong></td>
+                <td>務必保留「先產出 HTML/Word 審核表，老師看過點頭後才批次發布」的兩段式流程，AI 永遠是助教，最後把關者是老師。</td>
+              </tr>
+              <tr>
+                <td><strong>晚上 API 免費額度用完或網路塞車怎麼辦？</strong></td>
+                <td>Antigravity 具備內建多模態讀檔能力（<code class="inline">read_file</code>），若外部批次腳本超時或額度滿了，直接請 Antigravity 在對話中逐支讀取本機影片即可繼續批改。</td>
+              </tr>
+              <tr>
+                <td><strong>Chrome 一直連不上命題大師或輔導系統？</strong></td>
+                <td>檢查 Chrome 是否已在 <code class="inline">chrome://inspect/#remote-debugging</code> 開啟偵錯，且確定 <code class="inline">mcp_config.json</code> 中已加上 <code class="inline">--autoConnect</code>。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div data-skill-chapter="ch8"></div>
+      </section>
+
+      <footer class="footer">
+        <div><strong>Google Antigravity 教師實戰推廣手冊</strong>｜新進國小 洪偉朕老師 編著分享</div>
+        <div>已全面隱藏個人 API 金鑰、密碼與學生隱私資料｜2026 年 11 月</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Skill Template Modal -->
+  <div class="modal-backdrop" id="skillModalBackdrop" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <h3 id="skillModalTitle">SKILL.md 範本</h3>
+          <div id="skillModalPath" style="font-size:12px;color:var(--text-muted);margin-top:2px;"></div>
+        </div>
+        <button class="btn" id="skillModalClose">✕ 關閉</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <button class="btn btn-primary" id="skillModalCopyBtn">📋 一鍵複製完整 SKILL.md</button>
+          <button class="btn btn-accent" id="skillModalDownloadBtn">⬇️ 下載 SKILL.md 檔案</button>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>SKILL.md（已去敏可直接使用）</span></div>
+          <pre id="skillModalCode"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="skills-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
