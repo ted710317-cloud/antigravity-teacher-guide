@@ -1,4 +1,5 @@
 build_pdf.py
+build_skill_zips.py
 manual-pdf.html
 __pycache__/
 *.pyc

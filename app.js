@@ -116,7 +116,10 @@
         <td>${s.icon} <strong>${escapeHtml(s.name)}</strong><br><code class="inline">${escapeHtml(s.id)}</code></td>
         <td>${escapeHtml(s.category)}</td>
         <td>${s.triggers.slice(0, 2).map((t) => `<code class="inline">${escapeHtml(t)}</code>`).join(" ")}</td>
-        <td><a href="#${s.chapter}" data-jump-skill="${s.id}" data-target-page="${s.chapter}">前往章節 →</a></td>
+        <td style="white-space:nowrap;">
+          ${s.downloadUrl ? `<a href="${escapeHtml(s.downloadUrl)}" download style="margin-right:10px;font-weight:700;color:var(--accent);">📦 下載</a>` : ""}
+          <a href="#${s.chapter}" data-jump-skill="${s.id}" data-target-page="${s.chapter}">前往章節 →</a>
+        </td>
       </tr>`
       )
       .join("");
