@@ -39,7 +39,7 @@
       <a class="nav-link active" href="#overview"><span class="nav-num">總覽</span>手冊導讀與技能地圖</a>
       <a class="nav-link" href="#ch1"><span class="nav-num">Ch 1</span>認識 Antigravity 與安裝入門</a>
       <a class="nav-link" href="#ch2"><span class="nav-num">Ch 2</span>必裝 MCP 與外掛設定攻略</a>
-      <a class="nav-link" href="#ch3"><span class="nav-num">Ch 3</span>國語出題與作文發布</a>
+      <a class="nav-link" href="#ch3"><span class="nav-num">Ch 3</span>國語出題與作文診斷紅筆批改</a>
       <a class="nav-link" href="#ch4"><span class="nav-num">Ch 4</span>說數學與上台發表影音批改</a>
       <a class="nav-link" href="#ch5"><span class="nav-num">Ch 5</span>社會 4F 反思與題庫匯出</a>
       <a class="nav-link" href="#ch6"><span class="nav-num">Ch 6</span>數學遊戲吧與開發提示詞攻略</a>
@@ -68,11 +68,11 @@
         <div class="hero-tag">🏫 臺南市立新進國民小學｜教學現場 AI 實戰推廣</div>
         <h2>從「問答聊天」進化為「會動手幫忙批改、出卷與填表的 AI 助教」</h2>
         <p>
-          這份指南整理自 <strong>新進國小 洪偉朕老師</strong> 在國小教學與導師行政現場的真實使用經驗。從 Antigravity 基礎安裝、必裝 MCP 工具箱設定，到 <strong>11 套已實際打磨完成的教學專屬技能（Skills）</strong>，歡迎校內外老師直接複製範本、立即應用在自己的班級！
+          這份指南整理自 <strong>新進國小 洪偉朕老師</strong> 在國小教學與導師行政現場的真實使用經驗。從 Antigravity 基礎安裝、必裝 MCP 工具箱設定，到 <strong>13 套已實際打磨完成的教學專屬技能（Skills）</strong>，歡迎校內外老師直接複製範本、立即應用在自己的班級！
         </p>
         <div class="hero-meta">
           <div class="hero-stat">📦 4 大必裝 MCP 生態</div>
-          <div class="hero-stat">🎓 11 支教學實戰技能</div>
+          <div class="hero-stat">🎓 13 支教學實戰技能</div>
           <div class="hero-stat">🎮 8 套自研數學遊戲＋提示詞</div>
           <div class="hero-stat">🏫 3 大班級經營系統＋一鍵建立精靈</div>
           <div class="hero-stat">🔒 金鑰、密碼與學生隱私全面去敏</div>
@@ -84,13 +84,13 @@
       <section class="chapter">
         <div class="chapter-header">
           <span class="chapter-kicker">QUICK MAP</span>
-          <h2>教師現場 11 套實戰技能總覽地圖</h2>
+          <h2>教師現場 13 套實戰技能總覽地圖</h2>
           <p class="chapter-lead">您可以依授課領域或行政需求快速篩選，或點擊表格右側直接跳轉至對應章節複製技能範本。</p>
         </div>
 
         <div class="filter-bar" id="skillFilterBar">
-          <button class="chip active" data-filter="all">全部技能 (11)</button>
-          <button class="chip" data-filter="語文評量">📚 語文評量 (2)</button>
+          <button class="chip active" data-filter="all">全部技能 (13)</button>
+          <button class="chip" data-filter="語文評量">📚 語文評量 (4)</button>
           <button class="chip" data-filter="影音批改">🎙️ 影音批改 (3)</button>
           <button class="chip" data-filter="社會與題庫">🌏 社會與題庫 (2)</button>
           <button class="chip" data-filter="互動教具">🧪 互動教具 (1)</button>
@@ -289,10 +289,45 @@
       <section class="chapter page-view" id="ch3">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 03</span>
-          <h2>第 3 章｜教學實戰（一）：國語出題、作文發布與數位評量</h2>
-          <p class="chapter-lead">把反覆調格式的 Word 考卷排版與作文診斷發還作業，交給標準化技能自動化執行。</p>
+          <h2>第 3 章｜教學實戰（一）：國語出題、作文診斷／紅筆批改與發布</h2>
+          <p class="chapter-lead">把直書考卷排版交給自動化引擎，更將班級作文打磨成「先定寫作目的 → 審閱診斷報告書 → 依報告書大字紅筆批改 → Padlet 發布」的四步精準人機協作管線。</p>
         </div>
-        <p>在國小國語科教學中，洪老師最常面臨兩個耗時場景：一是每課上完都要出符合傳統「由右至左直書」與「田字格＋注音欄」規格的隨堂小考；二是作文批改完後，家長在手機上經常無法直接預覽 Word 檔。透過下面兩支技能，就能把繁瑣排版變成一鍵完成：</p>
+        <p>在國小國語科教學中，洪老師將原本最耗時的考卷排版與 26 篇手寫作文批改，整合成四支互相銜接的標準化技能：不僅自動完成考卷直書與田字格排版，更確保 AI 在作文批改上<strong>絕不自作主張亂評分</strong>——一定要由老師先設定「會考六級分＋單篇寫作目的」，產出診斷報告書給老師看過定案後，才動用大字版紅筆套印原卷並發布至 Padlet。</p>
+
+        <div class="diagram-box">
+          <svg width="780" height="122" viewBox="0 0 780 122" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="作文診斷與紅筆批改人機協作流程圖">
+            <rect x="8" y="24" width="166" height="72" rx="10" fill="#eaf1ff" stroke="#1a56db" stroke-width="1.8"/>
+            <text x="91" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#163a70">1. 師定標準與目的</text>
+            <text x="91" y="70" text-anchor="middle" font-size="11.5" fill="#334155">會考六級分＋該次寫作目的</text>
+            <text x="91" y="86" text-anchor="middle" font-size="10.5" fill="#475569">輸入手寫作文掃描 PDF</text>
+
+            <text x="184" y="65" font-size="18" font-weight="700" fill="#1a56db">→</text>
+
+            <rect x="204" y="24" width="176" height="72" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/>
+            <text x="292" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">2. 診斷書＋師審定案</text>
+            <text x="292" y="70" text-anchor="middle" font-size="11.5" fill="#334155">產出逐字稿/評析/升級範文</text>
+            <text x="292" y="86" text-anchor="middle" font-size="10.5" fill="#92400e">暫停等待老師看過定案</text>
+
+            <text x="390" y="65" font-size="18" font-weight="700" fill="#1a56db">→</text>
+
+            <rect x="410" y="24" width="174" height="72" rx="10" fill="#fce7f3" stroke="#be123c" stroke-width="1.8"/>
+            <text x="497" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#9f1239">3. 依報告書紅筆批改</text>
+            <text x="497" y="70" text-anchor="middle" font-size="11.5" fill="#334155">大字標楷套印原卷＋白底框</text>
+            <text x="497" y="86" text-anchor="middle" font-size="10.5" fill="#9f1239">網格定位與轉圖雙驗收</text>
+
+            <text x="594" y="65" font-size="18" font-weight="700" fill="#0f766e">→</text>
+
+            <rect x="614" y="24" width="158" height="72" rx="10" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.8"/>
+            <text x="693" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">4. Padlet 分欄發布</text>
+            <text x="693" y="70" text-anchor="middle" font-size="11.5" fill="#334155">01～26 座號一次收齊</text>
+            <text x="693" y="86" text-anchor="middle" font-size="10.5" fill="#0f766e">原稿＋診斷書＋紅筆卷</text>
+          </svg>
+        </div>
+
+        <div class="callout accent">
+          <span class="callout-title">✒️ 實戰案例：607 班「校慶徵文（26 篇原創寓言）」全自動診斷與紅筆原卷批改</span>
+          針對全班 26 篇手寫原稿 PDF，洪老師先設定「會考六級分規準＋必須原創寓言、不得沿用舊作情節」的寫作目的，由 <code class="inline">essay-diagnostic-report</code> 批次產出 26 份本機 A4 Word 診斷報告書與六級分升級範文彙編，經老師審閱定案後，再啟動 <code class="inline">red-pen-essay-review</code> 依報告書產出<strong>大字清晰版紅筆批改 PDF</strong>（滿頁自動附空白末頁放置綜合診斷框，並逐頁轉圖確認紅圈完全對位不壓字），最後讓 Padlet 每個座號欄位都同時擁有「原稿掃描、寫作診斷報告書、紅筆原卷批改」三份完整檔案，學生與家長在手機上點開即可直接線上翻閱學習！
+        </div>
         <div data-skill-chapter="ch3"></div>
       </section>
 
