@@ -37,7 +37,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-section-title">手冊導覽目錄</div>
       <a class="nav-link active" href="#overview"><span class="nav-num">總覽</span>手冊導讀與技能地圖</a>
-      <a class="nav-link" href="#ch1"><span class="nav-num">Ch 1</span>認識 Antigravity 與安裝入門</a>
+      <a class="nav-link" href="#ch1"><span class="nav-num">Ch 1</span>認識 Antigravity、初次設定與 Turbo</a>
       <a class="nav-link" href="#ch2"><span class="nav-num">Ch 2</span>必裝 MCP 與外掛設定攻略</a>
       <a class="nav-link" href="#ch3"><span class="nav-num">Ch 3</span>國語出題與作文診斷紅筆批改</a>
       <a class="nav-link" href="#ch4"><span class="nav-num">Ch 4</span>說數學與上台發表影音批改</a>
@@ -118,8 +118,8 @@
       <section class="chapter page-view" id="ch1">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 01</span>
-          <h2>第 1 章｜認識 Antigravity 與零基礎安裝指南</h2>
-          <p class="chapter-lead">五分鐘看懂 Antigravity 跟一般網頁版 ChatGPT / Gemini 有何不同，並完成電腦端安裝。</p>
+          <h2>第 1 章｜認識 Antigravity、初次設定與 Turbo 模式攻略</h2>
+          <p class="chapter-lead">五分鐘看懂 Antigravity 跟一般網頁版 AI 的差異，完成第一次啟動設定，並學會開啟 Turbo 模式省去重複點選確認。</p>
         </div>
 
         <h3>1.1 為什麼老師需要 Google Antigravity？</h3>
@@ -157,7 +157,7 @@
           </svg>
         </div>
 
-        <h3>1.2 安裝步驟與介面選擇</h3>
+        <h3>1.2 零基礎安裝與「第一次開啟」完整設定指南</h3>
         <div class="grid-3">
           <div class="info-card">
             <h4>🖥️ Antigravity 2.0 桌面版（首推）</h4>
@@ -173,19 +173,52 @@
           </div>
         </div>
 
-        <h4>📥 五分鐘安裝啟動流程</h4>
+        <h4>📥 第一次下載安裝與初次啟動 5 步驟</h4>
         <ol>
-          <li>前往 Google Antigravity 官方頁面（<code class="inline">https://antigravity.google</code>）下載對應作業系統安裝檔（Windows / macOS）。</li>
-          <li>安裝後開啟應用程式並使用 Google 帳號完成登入授權。</li>
-          <li>建議同時準備 <strong>Python 3.10+</strong> 與 <strong>Node.js 18+</strong>（許多好用的 MCP 工具與 Word/PDF 轉檔腳本皆依賴這兩個基礎環境）。</li>
-          <li>打開一個空白資料夾作為您的「工作區（Workspace）」，例如 <code class="inline">D:\教學AI工作區</code>，即可開始對話！</li>
+          <li><strong>下載並登入 Google 帳號</strong>：前往 Google Antigravity 官方頁面（<code class="inline">https://antigravity.google</code>）下載對應作業系統安裝檔（Windows / macOS）。安裝後開啟並使用 Google 帳號完成登入（若學校管理網域限制較多，建議優先用個人 Gmail 帳號）。</li>
+          <li><strong>備齊兩套基礎執行環境</strong>：建議順手安裝 <strong>Python 3.10+</strong> 與 <strong>Node.js 18+</strong>（第 2 章的 MCP 工具與第 3 章的作文紅筆批改／Word 轉檔腳本都需依賴這兩個環境）。</li>
+          <li><strong>完成初次歡迎精靈與主題選擇</strong>：首次啟動時依畫面選擇偏好的淺色／深色介面；若系統詢問工作模式，教師日常備課推薦選用完整的代理模式（如 <strong>Agent / Knowledge Work</strong>）。</li>
+          <li><strong>設定固定「工作區資料夾（Workspace / Open Folder）」</strong>：先在電腦建立一個專屬資料夾，例如 <code class="inline">D:\教學AI工作區</code>，接著點擊左側 <strong>Projects / Open Folder</strong> 開啟它。往後考卷、作文批改檔與互動網頁都會集中收在這裡。</li>
+          <li><strong>認識對話輸入框下方選單並測試一句指令</strong>：在對話框下方可切換 <strong>執行模式</strong>（<code class="inline">Planning</code> 先列計畫再執行、<code class="inline">Fast</code> 快速處理）與 <strong>Gemini 模型</strong>。試著輸入「幫我在工作區建立一個『六上期中備課』資料夾」，看到 AI 成功建立資料夾即大功告成！</li>
         </ol>
 
-        <h3>1.3 三個馬上變高手的介面小技巧</h3>
+        <div class="callout" style="border-left: 5px solid #dc2626; background: linear-gradient(135deg, rgba(220,38,38,0.06), rgba(26,86,219,0.05));">
+          <span class="callout-title">🎬 新手跟著影片一步步設定：Antigravity 初次使用與設定教學</span>
+          第一次開啟不知從哪裡點選嗎？歡迎直接觀看下方的操作教學影片，畫面與步驟都示範得很清楚，老師可以邊看邊跟著設定：
+          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:12px;">
+            <a class="btn btn-primary" style="background:#dc2626; border-color:#dc2626;" href="https://youtu.be/LyiiMVZE7uM?si=lvAROrnxT8u03DsU" target="_blank" rel="noopener noreferrer">▶️ 前往 YouTube 觀看設定教學影片</a>
+            <code class="inline" style="font-size:13px;">https://youtu.be/LyiiMVZE7uM?si=lvAROrnxT8u03DsU</code>
+          </div>
+        </div>
+
+        <h3>1.3 如何開啟 Turbo 模式？（省去一直跳窗按確認的困擾）</h3>
+        <p>剛開始使用 Antigravity 時，系統預設會以較嚴格的「<strong>執行前詢問（Request Review）</strong>」模式保護電腦——每當 AI 想幫您跑 Python 轉檔腳本、批次整理 26 篇作文或執行本機工具時，就會停下來跳出 <em>Run / Allow / Accept</em> 按鈕等待老師手動點擊。如果您已選定安心的教學資料夾，建議改為 <strong>Turbo 模式（或 Always Proceed）</strong>，讓 AI 一氣呵成幫您跑完批次作業！</p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h4>⚡ 四步驟切換為 Turbo 模式</h4>
+            <ol style="margin-bottom:0; padding-left:20px;">
+              <li>點開左側欄或右上角的 <strong>齒輪圖示 ⚙️（Settings）</strong>（快捷鍵 <code class="inline">Ctrl + ,</code>／Mac 為 <code class="inline">Cmd + ,</code>），進入 <strong>Agent Settings（代理程式設定）</strong>；部分版本也可直接在對話輸入框附近的權限下拉選單快速切換。</li>
+              <li>找到 <strong>Terminal Command Auto Execution（終端機指令自動執行）</strong> 或 <strong>Review Policy（審查政策 / Permission Preset）</strong>。</li>
+              <li>將預設的 <em>Request Review（每次詢問）</em> 或 <em>Auto</em> 切換為 <strong>Turbo</strong>（部分版本介面顯示為 <strong>Always Proceed／永遠自動執行</strong>）。</li>
+              <li>若您常把學生檔案放在桌面或下載資料夾，可同時將 <strong>Non-Workspace File Access（工作區外檔案存取）</strong> 調整為依需求放行，批改整批 PDF 時就不會卡住。</li>
+            </ol>
+          </div>
+          <div class="info-card">
+            <h4>🛡️ 開 Turbo 安全嗎？老師必看的兩道雙重保障</h4>
+            <ul style="margin-bottom:0; padding-left:20px;">
+              <li><strong>系統面：保留 Deny List（指令黑名單）</strong>：Turbo 模式會略過「逐次按確認」，但只要保留黑名單中的高風險系統指令（例如 <code class="inline">rm -rf</code>、格式化等破壞性命令），AI 就絕不會執行毀損電腦的動作。</li>
+              <li><strong>教學面：技能內建「先審核、後發布」鎖</strong>：開 Turbo 只加速<strong>本機讀檔、轉檔、截圖與排版</strong>；本手冊第 3、4、7 章凡是「對學生 Padlet 留言」或「寫入臺南市輔導系統」的技能，都已在 <code class="inline">SKILL.md</code> 寫死必須等老師點頭確認名單與內容才允許送出！</li>
+              <li><strong>彈性切回</strong>：若您偶爾要測試陌生來源的網路專案，隨時回到 Settings 切回 <code class="inline">Request Review</code> 即可。</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>1.4 三個馬上變高手的日常介面小技巧</h3>
         <ul>
           <li><strong>斜線指令（<code class="inline">/</code>）</strong>：在對話框輸入 <code class="inline">/</code>，就能喚出系統內建模式（如 <code class="inline">/plan</code> 先規劃再執行）或您安裝的教學技能（如 <code class="inline">/chinese-quiz</code>、<code class="inline">/發布作文</code>）。</li>
           <li><strong>拖曳媒體直接問</strong>：把國語課本照片、學生手寫 PDF 或「說數學」影片直接拖進對話框，AI 會直接讀取畫面與聲音。</li>
-          <li><strong>權限安全控制（Settings）</strong>：初次使用建議將終端機指令設為「執行前詢問（Request Review）」，AI 在寫入重要檔案或對外發文前都會先請您點確認。</li>
+          <li><strong>用 <code class="inline">@</code> 點名指定檔案</strong>：輸入 <code class="inline">@</code> 即可快速選取工作區內的特定 Word、PDF 或題庫 <code class="inline">.md</code> 檔，讓 AI 精準聚焦不找錯檔案。</li>
         </ul>
       </section>
 
