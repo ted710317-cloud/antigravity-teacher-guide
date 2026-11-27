@@ -26,14 +26,15 @@
     <div class="topbar-actions">
       <div class="last-updated-pill" title="本網站內容隨教學新做法持續更新">
         <span class="update-dot" aria-hidden="true"></span>
-        <span>最後更新：<time datetime="2026-11-27T23:14+08:00">2026-11-27 23:14</time></span>
+        <span>最後更新：<time datetime="2026-11-27T23:23+08:00">2026-11-27 23:23</time></span>
       </div>
       <div class="search-box">
         <span class="search-icon">🔍</span>
         <input type="search" id="globalSearch" placeholder="搜尋章節、MCP 或技能..." />
       </div>
-      <button class="btn" id="themeToggle">🌙 護眼深色</button>
-      <a class="btn btn-primary" href="./Antigravity教師實戰推廣手冊_新進國小洪偉朕老師.pdf" download>⬇️ 下載 PDF 手冊</a>
+      <button class="btn layout-toggle-btn" id="layoutToggle" title="切換電腦版／手機版閱讀編排">📱 手機版</button>
+      <button class="btn" id="themeToggle"><span class="theme-icon">🌙</span><span class="hide-on-mobile"> 護眼深色</span></button>
+      <a class="btn btn-primary" href="./Antigravity教師實戰推廣手冊_新進國小洪偉朕老師.pdf" download>⬇️ <span class="hide-on-mobile">下載 </span>PDF<span class="hide-on-mobile"> 手冊</span></a>
     </div>
   </header>
 
@@ -53,14 +54,24 @@
       <a class="nav-link" href="#ch9"><span class="nav-num">Ch 9</span>技能複製、備份與資安守則</a>
       <a class="nav-link" href="#conclusion"><span class="nav-num">結語</span>寫在最後的教學心聲</a>
 
+      <div class="sidebar-section-title">閱讀版型與設定</div>
+      <div style="padding: 0 8px 12px;">
+        <button class="btn" id="sidebarLayoutToggle" style="width:100%;justify-content:center;font-size:13px;">🔄 切換電腦／手機閱讀版</button>
+      </div>
+
       <div class="sidebar-section-title">快速篩選技能</div>
       <div style="padding: 0 8px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
         本手冊所有 <strong>API 金鑰、密碼與學生個資皆已完全去敏隱藏</strong>，同事老師可直接複製 <code class="inline">SKILL.md</code> 範本並填入個人環境設定即可啟用。
       </div>
     </aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <!-- Main Content -->
     <main class="main" id="mainContent">
+      <div class="mobile-status-bar" id="mobileStatusBar">
+        <span class="mobile-mode-tag">📱 手機閱讀版</span>
+        <span>🕒 最後更新：<time datetime="2026-11-27T23:23+08:00">2026-11-27 23:23</time></span>
+      </div>
       <div id="searchStatusBanner" class="search-banner">
         <span id="searchStatusText"></span>
         <button class="btn" id="clearSearchBtn">✕ 清除搜尋返回單章閱讀</button>
@@ -72,7 +83,7 @@
       <section class="hero">
         <div class="hero-top-row">
           <div class="hero-tag">🏫 臺南市立新進國民小學｜教學現場 AI 實戰推廣</div>
-          <div class="hero-updated"><span>🕒 最後更新：<time datetime="2026-11-27T23:14+08:00">2026-11-27 23:14</time>（持續更新）</span></div>
+          <div class="hero-updated"><span>🕒 最後更新：<time datetime="2026-11-27T23:23+08:00">2026-11-27 23:23</time>（持續更新）</span></div>
         </div>
         <h2>從「問答聊天」進化為「會動手幫忙批改、出卷與填表的 AI 助教」</h2>
         <div class="hero-foreword">
@@ -804,10 +815,13 @@
 
       <footer class="footer">
         <div><strong>Google Antigravity 教師實戰推廣手冊</strong>｜新進國小 洪偉朕老師 編著分享</div>
-        <div>已全面隱藏個人 API 金鑰、密碼與學生隱私資料｜最後更新：2026-11-27 23:14</div>
+        <div>已全面隱藏個人 API 金鑰、密碼與學生隱私資料｜最後更新：2026-11-27 23:23</div>
       </footer>
     </main>
   </div>
+
+  <!-- Mobile Bottom Sticky Navigation -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="手機版章節快速切換"></nav>
 
   <!-- Skill Template Modal -->
   <div class="modal-backdrop" id="skillModalBackdrop" role="dialog" aria-modal="true">

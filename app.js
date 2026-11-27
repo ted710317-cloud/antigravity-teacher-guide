@@ -116,13 +116,30 @@
         <td>${s.icon} <strong>${escapeHtml(s.name)}</strong><br><code class="inline">${escapeHtml(s.id)}</code></td>
         <td>${escapeHtml(s.category)}</td>
         <td>${s.triggers.slice(0, 2).map((t) => `<code class="inline">${escapeHtml(t)}</code>`).join(" ")}</td>
-        <td style="white-space:nowrap;">
-          ${s.downloadUrl ? `<a href="${escapeHtml(s.downloadUrl)}" download style="margin-right:10px;font-weight:700;color:var(--accent);">📦 下載</a>` : ""}
-          <a href="#${s.chapter}" data-jump-skill="${s.id}" data-target-page="${s.chapter}">前往章節 →</a>
+        <td class="matrix-actions-cell">
+          ${s.downloadUrl ? `<a class="matrix-dl-link" href="${escapeHtml(s.downloadUrl)}" download>📦 下載 ZIP</a>` : ""}
+          <a class="matrix-jump-link" href="#${s.chapter}" data-jump-skill="${s.id}" data-target-page="${s.chapter}">前往章節 →</a>
         </td>
       </tr>`
       )
       .join("");
+  }
+
+  // Add data-label attributes to all table cells for stacked Mobile card view
+  function decorateTablesForMobile() {
+    document.querySelectorAll(".table-wrap table").forEach((table) => {
+      const headers = Array.from(table.querySelectorAll("thead th")).map((th) =>
+        th.textContent.trim()
+      );
+      if (!headers.length) return;
+      table.querySelectorAll("tbody tr").forEach((row) => {
+        Array.from(row.children).forEach((cell, idx) => {
+          if (headers[idx]) {
+            cell.setAttribute("data-label", headers[idx]);
+          }
+        });
+      });
+    });
   }
 
   // Single-chapter pagination
@@ -130,10 +147,28 @@
   const navLinks = Array.from(document.querySelectorAll(".sidebar .nav-link"));
   const pageViews = Array.from(document.querySelectorAll(".page-view"));
   const chapterPager = document.getElementById("chapterPager");
+  const mobileBottomNav = document.getElementById("mobileBottomNav");
   const progressFill = document.getElementById("progressFill");
   const searchInput = document.getElementById("globalSearch");
   const searchBanner = document.getElementById("searchStatusBanner");
   const searchStatusText = document.getElementById("searchStatusText");
+
+  function renderMobileBottomNav(idx) {
+    if (!mobileBottomNav) return;
+    const prev = idx > 0 ? PAGE_META[idx - 1] : null;
+    const next = idx < PAGE_META.length - 1 ? PAGE_META[idx + 1] : null;
+    mobileBottomNav.innerHTML = `
+      <button class="mbnav-btn" ${prev ? `data-goto-page="${prev.id}"` : "disabled"}>
+        <span>← 上一章</span>
+      </button>
+      <button class="mbnav-btn mbnav-toc" id="mobileTocBtn" type="button">
+        <span>📖 目錄 (${idx + 1}/${PAGE_META.length})</span>
+      </button>
+      <button class="mbnav-btn" ${next ? `data-goto-page="${next.id}"` : "disabled"}>
+        <span>下一章 →</span>
+      </button>
+    `;
+  }
 
   function renderPager(idx) {
     if (!chapterPager) return;
@@ -151,6 +186,7 @@
         <span class="pager-title">${next ? escapeHtml(next.label) : ""}</span>
       </button>
     `;
+    renderMobileBottomNav(idx);
   }
 
   function clearSearchMode() {
@@ -250,7 +286,12 @@
       e.preventDefault();
       const targetId = (navLink.getAttribute("href") || "").replace("#", "");
       showPage(targetId);
-      sidebar?.classList.remove("open");
+      setSidebarOpen(false);
+      return;
+    }
+
+    if (e.target.closest("#mobileTocBtn")) {
+      setSidebarOpen(!sidebar?.classList.contains("open"));
       return;
     }
 
@@ -343,24 +384,80 @@
 
   // Theme Toggle
   const themeBtn = document.getElementById("themeToggle");
+  function syncThemeBtn(theme) {
+    if (!themeBtn) return;
+    themeBtn.innerHTML =
+      theme === "dark"
+        ? '<span class="theme-icon">☀️</span><span class="hide-on-mobile"> 亮色模式</span>'
+        : '<span class="theme-icon">🌙</span><span class="hide-on-mobile"> 護眼深色</span>';
+  }
   const savedTheme = localStorage.getItem("agy_guide_theme") || "light";
   document.documentElement.setAttribute("data-theme", savedTheme);
+  syncThemeBtn(savedTheme);
   if (themeBtn) {
-    themeBtn.textContent = savedTheme === "dark" ? "☀️ 亮色模式" : "🌙 護眼深色";
     themeBtn.addEventListener("click", () => {
       const cur = document.documentElement.getAttribute("data-theme");
       const next = cur === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
       localStorage.setItem("agy_guide_theme", next);
-      themeBtn.textContent = next === "dark" ? "☀️ 亮色模式" : "🌙 護眼深色";
+      syncThemeBtn(next);
     });
   }
 
-  // Mobile sidebar toggle
-  const sidebar = document.getElementById("sidebar");
-  document.getElementById("menuToggle")?.addEventListener("click", () => {
-    sidebar?.classList.toggle("open");
+  // Dual Layout Mode (Auto / Mobile / Desktop)
+  const layoutBtn = document.getElementById("layoutToggle");
+  const sidebarLayoutBtn = document.getElementById("sidebarLayoutToggle");
+  let layoutPref = localStorage.getItem("agy_guide_layout") || "auto";
+
+  function applyLayoutMode() {
+    const isNarrow = window.innerWidth <= 820;
+    const effective =
+      layoutPref === "mobile"
+        ? "mobile"
+        : layoutPref === "desktop"
+          ? "desktop"
+          : isNarrow
+            ? "mobile"
+            : "desktop";
+    document.documentElement.setAttribute("data-view", effective);
+    document.documentElement.setAttribute("data-layout-pref", layoutPref);
+
+    const nextLabel =
+      effective === "mobile" ? "🖥️ 切回電腦版" : "📱 預覽手機版";
+    if (layoutBtn) layoutBtn.textContent = nextLabel;
+    if (sidebarLayoutBtn) {
+      sidebarLayoutBtn.textContent =
+        effective === "mobile"
+          ? "🖥️ 切換為電腦寬版編排"
+          : "📱 切換為手機閱讀版編排";
+    }
+  }
+
+  function toggleLayoutMode() {
+    const curView = document.documentElement.getAttribute("data-view");
+    layoutPref = curView === "mobile" ? "desktop" : "mobile";
+    localStorage.setItem("agy_guide_layout", layoutPref);
+    setSidebarOpen(false);
+    applyLayoutMode();
+  }
+
+  layoutBtn?.addEventListener("click", toggleLayoutMode);
+  sidebarLayoutBtn?.addEventListener("click", toggleLayoutMode);
+  window.addEventListener("resize", () => {
+    if (layoutPref === "auto") applyLayoutMode();
   });
+
+  // Mobile sidebar drawer & backdrop
+  const sidebar = document.getElementById("sidebar");
+  const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+  function setSidebarOpen(open) {
+    sidebar?.classList.toggle("open", open);
+    sidebarBackdrop?.classList.toggle("open", open);
+  }
+  document.getElementById("menuToggle")?.addEventListener("click", () => {
+    setSidebarOpen(!sidebar?.classList.contains("open"));
+  });
+  sidebarBackdrop?.addEventListener("click", () => setSidebarOpen(false));
 
   // Handle browser Back/Forward hash changes
   window.addEventListener("hashchange", () => {
@@ -371,6 +468,8 @@
   // Initialize
   renderChapterSkills();
   renderSkillMatrix();
+  decorateTablesForMobile();
+  applyLayoutMode();
   const initialHash = (window.location.hash || "#overview").replace("#", "");
   showPage(initialHash, { updateHash: false, scrollTop: false });
 })();
