@@ -97,7 +97,8 @@
           <span>「${escapeHtml(s.promptExample)}」</span>
         </div>
         <div class="skill-actions">
-          <button class="btn btn-primary" data-copy-prompt="${s.id}">📋 複製示範指令</button>
+          ${s.downloadUrl ? `<a class="btn btn-primary" href="${escapeHtml(s.downloadUrl)}" download>📦 下載完整技能包 (.zip)</a>` : ""}
+          <button class="btn ${s.downloadUrl ? "" : "btn-primary"}" data-copy-prompt="${s.id}">📋 複製示範指令</button>
           <button class="btn btn-accent" data-open-skill="${s.id}">📄 複製 / 下載 SKILL.md 範本</button>
         </div>
       </article>

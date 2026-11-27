@@ -328,6 +328,20 @@
           <span class="callout-title">✒️ 實戰案例：607 班「校慶徵文（26 篇原創寓言）」全自動診斷與紅筆原卷批改</span>
           針對全班 26 篇手寫原稿 PDF，洪老師先設定「會考六級分規準＋必須原創寓言、不得沿用舊作情節」的寫作目的，由 <code class="inline">essay-diagnostic-report</code> 批次產出 26 份本機 A4 Word 診斷報告書與六級分升級範文彙編，經老師審閱定案後，再啟動 <code class="inline">red-pen-essay-review</code> 依報告書產出<strong>大字清晰版紅筆批改 PDF</strong>（滿頁自動附空白末頁放置綜合診斷框，並逐頁轉圖確認紅圈完全對位不壓字），最後讓 Padlet 每個座號欄位都同時擁有「原稿掃描、寫作診斷報告書、紅筆原卷批改」三份完整檔案，學生與家長在手機上點開即可直接線上翻閱學習！
         </div>
+
+        <div class="callout" style="border-left: 5px solid #1a56db; background: linear-gradient(135deg, rgba(26,86,219,0.06), rgba(15,118,110,0.06));">
+          <span class="callout-title">📦 作文批改三合一完整技能包（已去敏・下載解壓縮即用）</span>
+          想直接把「<strong>會考診斷報告書 ＋ 紅筆原卷批改腳本 ＋ Padlet 作文自動發布腳本</strong>」裝進自己的 Antigravity 嗎？下方提供完整壓縮包（含 <code class="inline">SKILL.md</code> 與 Python／Node.js 執行腳本，已移除個人金鑰與帳號），解壓縮放入 <code class="inline">%USERPROFILE%\.gemini\config\skills\</code> 並重開 Antigravity 即可啟用！
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+            <a class="btn btn-primary" href="./downloads/essay-skills-bundle-3in1.zip" download>⬇️ 一次打包下載全部 3 個作文技能 (ZIP)</a>
+            <a class="btn" href="./downloads/essay-diagnostic-report.zip" download>1️⃣ 下載：會考六級分診斷報告書 (.zip)</a>
+            <a class="btn" href="./downloads/red-pen-essay-review.zip" download>2️⃣ 下載：原卷紅筆大字批改＋腳本 (.zip)</a>
+            <a class="btn" href="./downloads/padlet-composition-publisher.zip" download>3️⃣ 下載：Padlet 作文分欄發布＋腳本 (.zip)</a>
+          </div>
+          <p style="margin:10px 0 0; font-size:13px; color:var(--text-muted);">
+            💡 環境備註：<code class="inline">red-pen-essay-review</code> 需在技能目錄執行 <code class="inline">python -m venv .venv</code> 並 <code class="inline">pip install -r requirements.txt</code>；<code class="inline">padlet-composition-publisher</code> 需本機 Microsoft Word、Node.js 與個人 <code class="inline">PADLET_API_KEY</code>。
+          </p>
+        </div>
         <div data-skill-chapter="ch3"></div>
       </section>
 
