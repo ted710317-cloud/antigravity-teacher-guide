@@ -124,6 +124,10 @@ a:hover {
   flex-shrink: 0;
 }
 
+.brand-text {
+  min-width: 0;
+}
+
 .brand-text h1 {
   margin: 0;
   font-size: 16px;
@@ -143,6 +147,33 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.last-updated-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-theme="dark"] .last-updated-pill {
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.update-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
 }
 
 .search-box {
@@ -295,6 +326,7 @@ a:hover {
 .main {
   margin-left: var(--sidebar-w);
   flex: 1;
+  min-width: 0;
   padding: 32px 40px 80px;
   max-width: 1140px;
 }
@@ -311,6 +343,15 @@ a:hover {
   overflow: hidden;
 }
 
+.hero-top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -320,7 +361,19 @@ a:hover {
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
-  margin-bottom: 14px;
+}
+
+.hero-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .hero h2 {
@@ -922,9 +975,48 @@ code.inline {
 }
 
 /* Responsive */
+@media (max-width: 1240px) {
+  .topbar {
+    padding: 0 16px;
+  }
+  .brand-text span {
+    display: none;
+  }
+  .topbar-actions {
+    gap: 8px;
+  }
+  .topbar-actions .btn {
+    padding: 7px 11px;
+    font-size: 13px;
+  }
+  .last-updated-pill {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  .search-box input {
+    width: 150px;
+  }
+  .search-box input:focus {
+    width: 185px;
+  }
+}
+
 @media (max-width: 960px) {
   .menu-toggle {
     display: inline-flex;
+  }
+  .last-updated-pill {
+    display: none;
+  }
+  .topbar-actions .search-box input {
+    width: 115px;
+  }
+  .topbar-actions .search-box input:focus {
+    width: 145px;
+  }
+  .topbar-actions .btn {
+    padding: 6px 9px;
+    font-size: 12.5px;
   }
   .sidebar {
     transform: translateX(-100%);
