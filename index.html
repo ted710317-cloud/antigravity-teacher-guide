@@ -55,9 +55,16 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main">
+    <main class="main" id="mainContent">
+      <div id="searchStatusBanner" class="search-banner">
+        <span id="searchStatusText"></span>
+        <button class="btn" id="clearSearchBtn">✕ 清除搜尋返回單章閱讀</button>
+      </div>
+
+      <!-- Overview Page -->
+      <div class="page-view active-page" id="overview">
       <!-- Hero -->
-      <section class="hero" id="overview">
+      <section class="hero">
         <div class="hero-tag">🏫 臺南市立新進國民小學｜教學現場 AI 實戰推廣</div>
         <h2>從「問答聊天」進化為「會動手幫忙批改、出卷與填表的 AI 助教」</h2>
         <p>
@@ -105,9 +112,10 @@
           </table>
         </div>
       </section>
+      </div>
 
       <!-- Chapter 1 -->
-      <section class="chapter" id="ch1">
+      <section class="chapter page-view" id="ch1">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 01</span>
           <h2>第 1 章｜認識 Antigravity 與零基礎安裝指南</h2>
@@ -182,7 +190,7 @@
       </section>
 
       <!-- Chapter 2 -->
-      <section class="chapter" id="ch2">
+      <section class="chapter page-view" id="ch2">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 02</span>
           <h2>第 2 章｜替 AI 裝上萬用雙手：必裝 MCP 與外掛設定攻略</h2>
@@ -278,7 +286,7 @@
       </section>
 
       <!-- Chapter 3 -->
-      <section class="chapter" id="ch3">
+      <section class="chapter page-view" id="ch3">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 03</span>
           <h2>第 3 章｜教學實戰（一）：國語出題、作文發布與數位評量</h2>
@@ -289,7 +297,7 @@
       </section>
 
       <!-- Chapter 4 -->
-      <section class="chapter" id="ch4">
+      <section class="chapter page-view" id="ch4">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 04</span>
           <h2>第 4 章｜教學實戰（二）：數學與上台發表的「多模態影音批改」管線</h2>
@@ -330,7 +338,7 @@
       </section>
 
       <!-- Chapter 5 -->
-      <section class="chapter" id="ch5">
+      <section class="chapter page-view" id="ch5">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 05</span>
           <h2>第 5 章｜教學實戰（三）：社會科 4F 反思與題庫匯出（審題／AI 出題資料庫）</h2>
@@ -360,7 +368,7 @@
       </section>
 
       <!-- Chapter 6 -->
-      <section class="chapter" id="ch6">
+      <section class="chapter page-view" id="ch6">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 06</span>
           <h2>第 6 章｜教學實戰（四）：互動教具、「數學遊戲吧」與開發提示詞全攻略</h2>
@@ -493,7 +501,7 @@
       </section>
 
       <!-- Chapter 7 -->
-      <section class="chapter" id="ch7">
+      <section class="chapter page-view" id="ch7">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 07</span>
           <h2>第 7 章｜教學實戰（五）：導師輔導行政與校務系統智慧同步</h2>
@@ -508,7 +516,7 @@
       </section>
 
       <!-- Chapter 8 -->
-      <section class="chapter" id="ch8">
+      <section class="chapter page-view" id="ch8">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 08</span>
           <h2>第 8 章｜教學實戰（六）：智慧班級經營工具箱（存摺・點歌・作業盤點）</h2>
@@ -617,7 +625,7 @@
       </section>
 
       <!-- Chapter 9 -->
-      <section class="chapter" id="ch9">
+      <section class="chapter page-view" id="ch9">
         <div class="chapter-header">
           <span class="chapter-kicker">CHAPTER 09</span>
           <h2>第 9 章｜技能複製、雙向備份與推廣避坑清單</h2>
@@ -672,7 +680,7 @@
       </section>
 
       <!-- Conclusion -->
-      <section class="chapter" id="conclusion" style="background: linear-gradient(135deg, var(--primary-soft), var(--accent-soft)); border: 1.5px solid var(--primary);">
+      <section class="chapter page-view" id="conclusion" style="background: linear-gradient(135deg, var(--primary-soft), var(--accent-soft)); border: 1.5px solid var(--primary);">
         <div class="chapter-header" style="border-bottom-color: rgba(26, 86, 219, 0.18);">
           <span class="chapter-kicker">CONCLUSION</span>
           <h2>結語｜寫在最後：把教學想像真正化為現實</h2>
@@ -685,6 +693,8 @@
           工具永遠是為了成全教育現場的溫度而生。希望這份手冊裡的每一支技能與網頁，都能成為您省下繁瑣行政時間的起點，把更多心力留給教室裡真正重要的人與對話。—— <strong>新進國小 洪偉朕老師</strong>
         </p>
       </section>
+
+      <nav id="chapterPager" class="chapter-pager" aria-label="章節翻頁導覽"></nav>
 
       <footer class="footer">
         <div><strong>Google Antigravity 教師實戰推廣手冊</strong>｜新進國小 洪偉朕老師 編著分享</div>

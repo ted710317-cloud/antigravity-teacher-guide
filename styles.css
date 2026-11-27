@@ -742,6 +742,115 @@ code.inline {
   }
 }
 
+/* Single-Chapter Page View & Pager */
+.page-view {
+  display: none;
+}
+
+.page-view.active-page {
+  display: block;
+  animation: pageFadeIn 0.18s ease-out;
+}
+
+.main.search-mode .page-view.search-match {
+  display: block;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-banner {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.search-banner.visible {
+  display: flex;
+}
+
+.chapter-pager {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 24px 0 10px;
+}
+
+.pager-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: var(--shadow-sm);
+}
+
+.pager-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pager-btn.next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.pager-btn.disabled {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pager-dir {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.pager-title {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.pager-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .chapter-pager {
+    flex-direction: column;
+  }
+  .pager-btn.next {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
 /* Modal */
 .modal-backdrop {
   position: fixed;
@@ -847,8 +956,12 @@ code.inline {
 }
 
 @media print {
-  .topbar, .sidebar, .progress-track, .filter-bar, .skill-actions, .copy-btn, .modal-backdrop {
+  .topbar, .sidebar, .progress-track, .filter-bar, .skill-actions, .copy-btn, .modal-backdrop, .chapter-pager, .search-banner {
     display: none !important;
+  }
+  .page-view {
+    display: block !important;
+    page-break-after: always;
   }
   .main {
     margin-left: 0 !important;

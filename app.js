@@ -1,6 +1,22 @@
 (function () {
   const skills = window.TEACHER_SKILLS || [];
 
+  const PAGE_META = [
+    { id: "overview", label: "總覽｜手冊導讀與技能地圖" },
+    { id: "ch1", label: "第 1 章｜認識 Antigravity 與安裝入門" },
+    { id: "ch2", label: "第 2 章｜必裝 MCP 與外掛設定攻略" },
+    { id: "ch3", label: "第 3 章｜國語出題、作文發布與數位評量" },
+    { id: "ch4", label: "第 4 章｜說數學與上台發表影音批改" },
+    { id: "ch5", label: "第 5 章｜社會 4F 反思與題庫資料庫" },
+    { id: "ch6", label: "第 6 章｜數學遊戲吧與開發提示詞攻略" },
+    { id: "ch7", label: "第 7 章｜導師輔導紀錄與系統同步" },
+    { id: "ch8", label: "第 8 章｜智慧班級經營工具箱（存摺・點歌・盤點）" },
+    { id: "ch9", label: "第 9 章｜技能複製、備份與推廣避坑清單" },
+    { id: "conclusion", label: "結語｜把教學想像真正化為現實" }
+  ];
+
+  let currentPageId = "overview";
+
   // Clipboard helper with fallback for file:// URLs
   async function copyText(text, btn) {
     let ok = false;
@@ -95,14 +111,84 @@
     tbody.innerHTML = skills
       .map(
         (s) => `
-      <tr>
+      <tr data-category="${escapeHtml(s.category)}">
         <td>${s.icon} <strong>${escapeHtml(s.name)}</strong><br><code class="inline">${escapeHtml(s.id)}</code></td>
         <td>${escapeHtml(s.category)}</td>
         <td>${s.triggers.slice(0, 2).map((t) => `<code class="inline">${escapeHtml(t)}</code>`).join(" ")}</td>
-        <td><a href="#${s.chapter}" data-jump-skill="${s.id}">前往章節 →</a></td>
+        <td><a href="#${s.chapter}" data-jump-skill="${s.id}" data-target-page="${s.chapter}">前往章節 →</a></td>
       </tr>`
       )
       .join("");
+  }
+
+  // Single-chapter pagination
+  const mainContent = document.getElementById("mainContent");
+  const navLinks = Array.from(document.querySelectorAll(".sidebar .nav-link"));
+  const pageViews = Array.from(document.querySelectorAll(".page-view"));
+  const chapterPager = document.getElementById("chapterPager");
+  const progressFill = document.getElementById("progressFill");
+  const searchInput = document.getElementById("globalSearch");
+  const searchBanner = document.getElementById("searchStatusBanner");
+  const searchStatusText = document.getElementById("searchStatusText");
+
+  function renderPager(idx) {
+    if (!chapterPager) return;
+    const prev = idx > 0 ? PAGE_META[idx - 1] : null;
+    const next = idx < PAGE_META.length - 1 ? PAGE_META[idx + 1] : null;
+
+    chapterPager.innerHTML = `
+      <button class="pager-btn prev ${prev ? "" : "disabled"}" ${prev ? `data-goto-page="${prev.id}"` : ""}>
+        <span class="pager-dir">← 上一頁</span>
+        <span class="pager-title">${prev ? escapeHtml(prev.label) : ""}</span>
+      </button>
+      <div class="pager-indicator">第 ${idx + 1} 頁 / 共 ${PAGE_META.length} 頁</div>
+      <button class="pager-btn next ${next ? "" : "disabled"}" ${next ? `data-goto-page="${next.id}"` : ""}>
+        <span class="pager-dir">下一頁 →</span>
+        <span class="pager-title">${next ? escapeHtml(next.label) : ""}</span>
+      </button>
+    `;
+  }
+
+  function clearSearchMode() {
+    if (searchInput && searchInput.value) {
+      searchInput.value = "";
+    }
+    mainContent?.classList.remove("search-mode");
+    searchBanner?.classList.remove("visible");
+    pageViews.forEach((p) => p.classList.remove("search-match"));
+    if (chapterPager) chapterPager.style.display = "";
+  }
+
+  function showPage(pageId, opts = {}) {
+    const { updateHash = true, scrollTop = true } = opts;
+    const idx = PAGE_META.findIndex((m) => m.id === pageId);
+    const validIdx = idx >= 0 ? idx : 0;
+    const targetId = PAGE_META[validIdx].id;
+    currentPageId = targetId;
+
+    clearSearchMode();
+
+    pageViews.forEach((p) => {
+      p.classList.toggle("active-page", p.id === targetId);
+    });
+
+    navLinks.forEach((l) => {
+      l.classList.toggle("active", l.getAttribute("href") === `#${targetId}`);
+    });
+
+    renderPager(validIdx);
+
+    if (progressFill) {
+      progressFill.style.width = `${((validIdx + 1) / PAGE_META.length) * 100}%`;
+    }
+
+    if (updateHash && window.location.hash !== `#${targetId}`) {
+      history.pushState(null, "", `#${targetId}`);
+    }
+
+    if (scrollTop) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   // Modal logic
@@ -125,7 +211,7 @@
   }
 
   function closeSkillModal() {
-    modalBackdrop.classList.remove("open");
+    modalBackdrop?.classList.remove("open");
   }
 
   document.addEventListener("click", (e) => {
@@ -149,9 +235,29 @@
       return;
     }
 
+    const pagerBtn = e.target.closest("[data-goto-page]");
+    if (pagerBtn) {
+      showPage(pagerBtn.getAttribute("data-goto-page"));
+      return;
+    }
+
+    const navLink = e.target.closest(".sidebar .nav-link");
+    if (navLink) {
+      e.preventDefault();
+      const targetId = (navLink.getAttribute("href") || "").replace("#", "");
+      showPage(targetId);
+      sidebar?.classList.remove("open");
+      return;
+    }
+
     const jumpLink = e.target.closest("[data-jump-skill]");
     if (jumpLink) {
+      e.preventDefault();
       const id = jumpLink.getAttribute("data-jump-skill");
+      const targetPage = jumpLink.getAttribute("data-target-page");
+      if (targetPage) {
+        showPage(targetPage, { scrollTop: false });
+      }
       setTimeout(() => {
         const card = document.querySelector(`[data-skill-id="${id}"]`);
         if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -188,7 +294,7 @@
     if (e.key === "Escape") closeSkillModal();
   });
 
-  // Category Filter Chips (filters skill cards + auto-hides empty chapters only when filtering)
+  // Category Filter Chips (filters Overview matrix AND skill cards)
   const filterBar = document.getElementById("skillFilterBar");
   if (filterBar) {
     filterBar.addEventListener("click", (e) => {
@@ -197,29 +303,39 @@
       filterBar.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"));
       chip.classList.add("active");
       const cat = chip.getAttribute("data-filter");
-      document.querySelectorAll(".skill-card").forEach((card) => {
-        const match = cat === "all" || card.getAttribute("data-category") === cat;
-        card.style.display = match ? "" : "none";
+      document.querySelectorAll("#skillMatrixBody tr, .skill-card").forEach((el) => {
+        const match = cat === "all" || el.getAttribute("data-category") === cat;
+        el.style.display = match ? "" : "none";
       });
     });
   }
 
-  // Search box
-  const searchInput = document.getElementById("globalSearch");
+  // Search box (searches across all pages, restores active chapter when cleared)
   if (searchInput) {
     searchInput.addEventListener("input", () => {
       const q = searchInput.value.trim().toLowerCase();
-      document.querySelectorAll(".chapter").forEach((ch) => {
-        if (!q) {
-          ch.style.display = "";
-          ch.querySelectorAll(".skill-card").forEach((c) => (c.style.display = ""));
-          return;
-        }
-        const text = ch.textContent.toLowerCase();
-        ch.style.display = text.includes(q) ? "" : "none";
+      if (!q) {
+        showPage(currentPageId, { updateHash: false, scrollTop: false });
+        return;
+      }
+      mainContent?.classList.add("search-mode");
+      if (chapterPager) chapterPager.style.display = "none";
+      let matchCount = 0;
+      pageViews.forEach((p) => {
+        const hit = p.textContent.toLowerCase().includes(q);
+        p.classList.toggle("search-match", hit);
+        if (hit) matchCount += 1;
       });
+      if (searchStatusText) {
+        searchStatusText.textContent = `🔍 搜尋「${searchInput.value.trim()}」：共找到 ${matchCount} 個相關章節`;
+      }
+      searchBanner?.classList.add("visible");
     });
   }
+
+  document.getElementById("clearSearchBtn")?.addEventListener("click", () => {
+    showPage(currentPageId, { updateHash: false, scrollTop: true });
+  });
 
   // Theme Toggle
   const themeBtn = document.getElementById("themeToggle");
@@ -241,38 +357,16 @@
   document.getElementById("menuToggle")?.addEventListener("click", () => {
     sidebar?.classList.toggle("open");
   });
-  sidebar?.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => sidebar.classList.remove("open"));
+
+  // Handle browser Back/Forward hash changes
+  window.addEventListener("hashchange", () => {
+    const hashId = (window.location.hash || "#overview").replace("#", "");
+    showPage(hashId, { updateHash: false });
   });
 
-  // Scroll progress & active nav highlight
-  const progressFill = document.getElementById("progressFill");
-  const navLinks = Array.from(document.querySelectorAll(".sidebar .nav-link"));
-  const sections = navLinks
-    .map((l) => document.querySelector(l.getAttribute("href")))
-    .filter(Boolean);
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
-      if (progressFill) progressFill.style.width = `${pct}%`;
-
-      let currentId = sections[0]?.id;
-      for (const sec of sections) {
-        if (sec.getBoundingClientRect().top <= 140) {
-          currentId = sec.id;
-        }
-      }
-      navLinks.forEach((l) => {
-        l.classList.toggle("active", l.getAttribute("href") === `#${currentId}`);
-      });
-    },
-    { passive: true }
-  );
-
+  // Initialize
   renderChapterSkills();
   renderSkillMatrix();
+  const initialHash = (window.location.hash || "#overview").replace("#", "");
+  showPage(initialHash, { updateHash: false, scrollTop: false });
 })();
