@@ -1,46 +1,50 @@
 :root {
-  --bg: #f7f6f2;
-  --surface: #ffffff;
-  --surface-alt: #f0eee7;
-  --text: #1c2430;
-  --text-muted: #556070;
-  --border: #e2dfd5;
-  --primary: #1a56db;
-  --primary-soft: #eaf1ff;
-  --accent: #0f766e;
-  --accent-soft: #e6f6f4;
-  --warn: #b45309;
-  --warn-soft: #fef3c7;
-  --danger: #b91c1c;
+  --bg: #faf5e6;
+  --surface: #fffdf8;
+  --surface-alt: #f3ebd3;
+  --text: #2a211c;
+  --text-muted: #66574c;
+  --border: #e3d3b1;
+  --primary: #0f766e;
+  --primary-soft: #e4f4f1;
+  --accent: #b83b28;
+  --accent-soft: #fcebe7;
+  --gold: #c98a1b;
+  --gold-soft: #fef4da;
+  --warn: #b4690e;
+  --warn-soft: #fef3d2;
+  --danger: #b83b28;
   --danger-soft: #fee2e2;
-  --code-bg: #18202c;
-  --code-text: #e8eef7;
-  --shadow-sm: 0 2px 8px rgba(20, 30, 50, 0.05);
-  --shadow-md: 0 8px 24px rgba(20, 30, 50, 0.08);
+  --code-bg: #1d1916;
+  --code-text: #f3ede2;
+  --shadow-sm: 0 2px 8px rgba(42, 33, 28, 0.06);
+  --shadow-md: 0 10px 26px rgba(42, 33, 28, 0.1);
   --radius: 14px;
   --sidebar-w: 280px;
   --topbar-h: 68px;
 }
 
 [data-theme="dark"] {
-  --bg: #0f141c;
-  --surface: #171e29;
-  --surface-alt: #1e2736;
-  --text: #edf2f7;
-  --text-muted: #9aa7b8;
-  --border: #2a3444;
-  --primary: #60a5fa;
-  --primary-soft: rgba(96, 165, 250, 0.14);
-  --accent: #2dd4bf;
-  --accent-soft: rgba(45, 212, 191, 0.14);
+  --bg: #141210;
+  --surface: #1e1a17;
+  --surface-alt: #28221d;
+  --text: #f5efe3;
+  --text-muted: #baac9a;
+  --border: #3d332a;
+  --primary: #2dd4bf;
+  --primary-soft: rgba(45, 212, 191, 0.14);
+  --accent: #f0715d;
+  --accent-soft: rgba(240, 113, 93, 0.16);
+  --gold: #fbbf24;
+  --gold-soft: rgba(251, 191, 36, 0.14);
   --warn: #fbbf24;
   --warn-soft: rgba(251, 191, 36, 0.14);
   --danger: #f87171;
   --danger-soft: rgba(248, 113, 113, 0.14);
-  --code-bg: #0b0f16;
-  --code-text: #e2e8f0;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.4);
+  --code-bg: #0e0c0a;
+  --code-text: #efe7da;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -111,16 +115,13 @@ a:hover {
   min-width: 0;
 }
 
-.brand-badge {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #1a56db, #0f766e);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 18px;
+.brand-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(184, 59, 40, 0.18);
   flex-shrink: 0;
 }
 
@@ -155,9 +156,9 @@ a:hover {
   gap: 7px;
   padding: 6px 12px;
   border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  border: 1px solid rgba(15, 118, 110, 0.25);
+  background: var(--gold-soft);
+  color: #8c5a08;
+  border: 1px solid rgba(201, 138, 27, 0.35);
   font-size: 12.5px;
   font-weight: 700;
   white-space: nowrap;
@@ -165,7 +166,8 @@ a:hover {
 }
 
 [data-theme="dark"] .last-updated-pill {
-  border-color: rgba(45, 212, 191, 0.3);
+  color: var(--gold);
+  border-color: rgba(251, 191, 36, 0.32);
 }
 
 .update-dot {
@@ -275,6 +277,40 @@ a:hover {
   z-index: 900;
 }
 
+.sidebar-author-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--primary-soft));
+  border: 1px solid var(--border);
+}
+
+.sidebar-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.sidebar-author-info strong {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.sidebar-author-info span {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
 .sidebar-section-title {
   font-size: 11px;
   font-weight: 700;
@@ -333,14 +369,71 @@ a:hover {
 
 /* Hero Banner */
 .hero {
-  background: linear-gradient(135deg, #163a70 0%, #1a56db 55%, #0f766e 100%);
+  background: linear-gradient(135deg, #132d32 0%, #0e6065 55%, #194b5e 100%);
   color: #ffffff;
+  border: 1.5px solid rgba(237, 209, 121, 0.55);
   border-radius: 20px;
-  padding: 38px 40px;
-  margin-bottom: 36px;
+  padding: 34px 36px;
+  margin-bottom: 34px;
   box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 235px;
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero-avatar-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-avatar-frame {
+  width: 220px;
+  height: 220px;
+  border-radius: 22px;
+  padding: 5px;
+  background: linear-gradient(145deg, #edd179, #b83b28 60%, #0f766e);
+  box-shadow: 0 14px 32px rgba(10, 20, 22, 0.36);
+}
+
+.hero-avatar-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 17px;
+  display: block;
+}
+
+.hero-avatar-caption {
+  font-size: 12.5px;
+  color: #fde68a;
+  background: rgba(15, 30, 34, 0.52);
+  border: 1px solid rgba(237, 209, 121, 0.4);
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.hero-pdf-btn {
+  background: #fffdf8;
+  color: #133b40;
+  border: 1.5px solid #edd179;
+}
+
+.hero-pdf-btn:hover {
+  background: #fef4da;
+  color: #132d32;
 }
 
 .hero-top-row {
@@ -441,11 +534,79 @@ a:hover {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: var(--primary);
-  background: var(--primary-soft);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(184, 59, 40, 0.22);
   padding: 4px 10px;
   border-radius: 6px;
   margin-bottom: 8px;
+}
+
+.conclusion-chapter {
+  background: linear-gradient(135deg, var(--gold-soft), var(--primary-soft));
+  border: 1.5px solid var(--gold);
+}
+
+.conclusion-chapter .chapter-header {
+  border-bottom-color: rgba(201, 138, 27, 0.25);
+}
+
+.conclusion-quote {
+  margin: 0 0 18px;
+  padding: 18px 22px;
+  background: var(--surface);
+  border-left: 5px solid var(--accent);
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.8;
+  box-shadow: var(--shadow-sm);
+}
+
+.conclusion-signoff {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.conclusion-note {
+  flex: 1 1 320px;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.author-seal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--gold);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.author-seal-badge img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+}
+
+.author-seal-badge strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--text);
+}
+
+.author-seal-badge span {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 .chapter h2 {
@@ -1095,9 +1256,34 @@ html[data-view="mobile"] .mobile-mode-tag {
 }
 
 html[data-view="mobile"] .hero {
-  padding: 22px 18px;
+  padding: 20px 16px;
   border-radius: 16px;
   margin-bottom: 18px;
+}
+
+html[data-view="mobile"] .hero-grid {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+html[data-view="mobile"] .hero-avatar-showcase {
+  order: -1;
+}
+
+html[data-view="mobile"] .hero-avatar-frame {
+  width: 124px;
+  height: 124px;
+  border-radius: 18px;
+  padding: 4px;
+}
+
+html[data-view="mobile"] .hero-avatar-frame img {
+  border-radius: 14px;
+}
+
+html[data-view="mobile"] .conclusion-signoff {
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 html[data-view="mobile"] .hero h2 {
@@ -1353,8 +1539,10 @@ html[data-view="mobile"][data-layout-pref="mobile"] .mobile-bottom-nav {
     font-size: 14.5px;
   }
   .topbar-actions .btn {
-    padding: 6px 9px;
+    padding: 6px 8px;
     font-size: 12.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 }
 
@@ -1375,10 +1563,9 @@ html[data-view="mobile"][data-layout-pref="mobile"] .mobile-bottom-nav {
   .brand {
     gap: 8px;
   }
-  .brand-badge {
+  .brand-avatar {
     width: 34px;
     height: 34px;
-    font-size: 15px;
   }
   .brand-text h1 {
     font-size: 14.5px;
@@ -1399,8 +1586,10 @@ html[data-view="mobile"][data-layout-pref="mobile"] .mobile-bottom-nav {
     font-size: 12px;
   }
   .topbar-actions .btn {
-    padding: 6px 9px;
+    padding: 6px 8px;
     font-size: 12.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 }
 

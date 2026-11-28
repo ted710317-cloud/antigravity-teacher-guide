@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Google Antigravity 教師實戰推廣手冊｜新進國小 朕 老師</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a56db'/><text x='32' y='42' font-size='26' font-weight='bold' text-anchor='middle' fill='white' font-family='sans-serif'>AG</text></svg>" />
+  <link rel="icon" type="image/jpeg" href="./assets/avatar-icon.jpg" />
+  <link rel="apple-touch-icon" href="./assets/teacher-avatar.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -17,7 +18,7 @@
   <header class="topbar">
     <div class="brand">
       <button class="btn menu-toggle" id="menuToggle" aria-label="開啟目錄">☰</button>
-      <div class="brand-badge">AG</div>
+      <img class="brand-avatar" src="./assets/avatar-icon.jpg" alt="新進國小 朕 老師 Q 版頭像" width="42" height="42" />
       <div class="brand-text">
         <h1>Google Antigravity 教師實戰推廣手冊</h1>
         <span>新進國小 朕 老師 實戰分享與教學技能庫</span>
@@ -26,7 +27,7 @@
     <div class="topbar-actions">
       <div class="last-updated-pill" title="本網站內容隨教學新做法持續更新">
         <span class="update-dot" aria-hidden="true"></span>
-        <span>最後更新：<time datetime="2026-11-27T23:32+08:00">2026-11-27 23:32</time></span>
+        <span>最後更新：<time datetime="2026-11-28T11:23+08:00">2026-11-28 11:23</time></span>
       </div>
       <div class="search-box">
         <span class="search-icon">🔍</span>
@@ -41,6 +42,13 @@
   <div class="layout">
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
+      <div class="sidebar-author-card">
+        <img class="sidebar-avatar" src="./assets/avatar-icon.jpg" alt="朕 老師 Q 版頭像" width="44" height="44" />
+        <div class="sidebar-author-info">
+          <strong>新進國小・朕 老師</strong>
+          <span>教學現場 AI 實戰推廣</span>
+        </div>
+      </div>
       <div class="sidebar-section-title">手冊導覽目錄</div>
       <a class="nav-link active" href="#overview"><span class="nav-num">總覽</span>手冊導讀與技能地圖</a>
       <a class="nav-link" href="#ch1"><span class="nav-num">Ch 1</span>認識 Antigravity、初次設定與 Turbo</a>
@@ -70,7 +78,7 @@
     <main class="main" id="mainContent">
       <div class="mobile-status-bar" id="mobileStatusBar">
         <span class="mobile-mode-tag">📱 手機閱讀版</span>
-        <span>🕒 最後更新：<time datetime="2026-11-27T23:32+08:00">2026-11-27 23:32</time></span>
+        <span>🕒 最後更新：<time datetime="2026-11-28T11:23+08:00">2026-11-28 11:23</time></span>
       </div>
       <div id="searchStatusBanner" class="search-banner">
         <span id="searchStatusText"></span>
@@ -83,22 +91,32 @@
       <section class="hero">
         <div class="hero-top-row">
           <div class="hero-tag">🏫 臺南市立新進國民小學｜教學現場 AI 實戰推廣</div>
-          <div class="hero-updated"><span>🕒 最後更新：<time datetime="2026-11-27T23:32+08:00">2026-11-27 23:32</time>（持續更新）</span></div>
+          <div class="hero-updated"><span>🕒 最後更新：<time datetime="2026-11-28T11:23+08:00">2026-11-28 11:23</time>（持續更新）</span></div>
         </div>
-        <h2>從「問答聊天」進化為「會動手幫忙批改、出卷與填表的 AI 助教」</h2>
-        <div class="hero-foreword">
-          💡 <strong>前言：</strong>Antigravity 加 Gemini Pro（付費版）等於老師的專業助理。只要你交代它，它一定能使命必達。
-        </div>
-        <p>
-          這份指南整理自 <strong>新進國小 朕 老師</strong> 在國小教學與導師行政現場的真實使用經驗。從 Antigravity 基礎安裝、必裝 MCP 工具箱設定，到 <strong>13 套已實際打磨完成的教學專屬技能（Skills）</strong>，歡迎校內外老師直接複製範本、立即應用在自己的班級！
-        </p>
-        <div class="hero-meta">
-          <div class="hero-stat">📦 4 大必裝 MCP 生態</div>
-          <div class="hero-stat">🎓 13 支教學實戰技能</div>
-          <div class="hero-stat">🎮 8 套自研數學遊戲＋提示詞</div>
-          <div class="hero-stat">🏫 3 大班級經營系統＋一鍵建立精靈</div>
-          <div class="hero-stat">🔒 金鑰、密碼與學生隱私全面去敏</div>
-          <a class="btn" style="background:#fff;color:#163a70;border:none;" href="./Antigravity教師實戰推廣手冊_新進國小朕老師.pdf" download>📥 下載精裝推廣手冊 (PDF)</a>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h2>從「問答聊天」進化為「會動手幫忙批改、出卷與填表的 AI 助教」</h2>
+            <div class="hero-foreword">
+              💡 <strong>前言：</strong>Antigravity 加 Gemini Pro（付費版）等於老師的專業助理。只要你交代它，它一定能使命必達。
+            </div>
+            <p>
+              這份指南整理自 <strong>新進國小 朕 老師</strong> 在國小教學與導師行政現場的真實使用經驗。從 Antigravity 基礎安裝、必裝 MCP 工具箱設定，到 <strong>13 套已實際打磨完成的教學專屬技能（Skills）</strong>，歡迎校內外老師直接複製範本、立即應用在自己的班級！
+            </p>
+            <div class="hero-meta">
+              <div class="hero-stat">📦 4 大必裝 MCP 生態</div>
+              <div class="hero-stat">🎓 13 支教學實戰技能</div>
+              <div class="hero-stat">🎮 8 套自研數學遊戲＋提示詞</div>
+              <div class="hero-stat">🏫 3 大班級經營系統＋一鍵建立精靈</div>
+              <div class="hero-stat">🔒 金鑰、密碼與學生隱私全面去敏</div>
+              <a class="btn hero-pdf-btn" href="./Antigravity教師實戰推廣手冊_新進國小朕老師.pdf" download>📥 下載精裝推廣手冊 (PDF)</a>
+            </div>
+          </div>
+          <div class="hero-avatar-showcase">
+            <div class="hero-avatar-frame">
+              <img src="./assets/teacher-avatar.jpg" alt="新進國小 朕 老師 Q 版跑者教師頭像" />
+            </div>
+            <div class="hero-avatar-caption">🖌️ <strong>新進國小・朕 老師</strong>｜教學 × AI 跑者</div>
+          </div>
         </div>
       </section>
 
@@ -152,31 +170,31 @@
 
         <div class="diagram-box">
           <svg width="780" height="165" viewBox="0 0 780 165" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Antigravity 教師工作流架構圖">
-            <rect x="10" y="38" width="160" height="86" rx="12" fill="#eaf1ff" stroke="#1a56db" stroke-width="2"/>
-            <text x="90" y="72" text-anchor="middle" font-size="15" font-weight="700" fill="#163a70">👩‍🏫 老師一句話指令</text>
-            <text x="90" y="96" text-anchor="middle" font-size="12" fill="#334155">貼照片 / 給網址 / 說需求</text>
+            <rect x="10" y="38" width="160" height="86" rx="12" fill="#fef4da" stroke="#c98a1b" stroke-width="2"/>
+            <text x="90" y="72" text-anchor="middle" font-size="15" font-weight="700" fill="#7c4a08">👩‍🏫 老師一句話指令</text>
+            <text x="90" y="96" text-anchor="middle" font-size="12" fill="#4a3b32">貼照片 / 給網址 / 說需求</text>
 
-            <line x1="170" y1="81" x2="215" y2="81" stroke="#1a56db" stroke-width="2.5" marker-end="url(#arrow)"/>
+            <line x1="170" y1="81" x2="215" y2="81" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
 
-            <rect x="218" y="25" width="180" height="112" rx="14" fill="#1a56db"/>
-            <text x="308" y="64" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">🧠 Antigravity</text>
-            <text x="308" y="88" text-anchor="middle" font-size="12" fill="#dbeafe">理解意圖 × 規劃步驟</text>
-            <text x="308" y="108" text-anchor="middle" font-size="12" fill="#dbeafe">多模態看圖聽影判讀</text>
+            <rect x="218" y="25" width="180" height="112" rx="14" fill="#133b40"/>
+            <text x="308" y="64" text-anchor="middle" font-size="16" font-weight="800" fill="#fde68a">🧠 Antigravity</text>
+            <text x="308" y="88" text-anchor="middle" font-size="12" fill="#e4f4f1">理解意圖 × 規劃步驟</text>
+            <text x="308" y="108" text-anchor="middle" font-size="12" fill="#e4f4f1">多模態看圖聽影判讀</text>
 
             <line x1="398" y1="58" x2="450" y2="45" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
             <line x1="398" y1="104" x2="450" y2="117" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
 
-            <rect x="454" y="10" width="310" height="62" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="2"/>
+            <rect x="454" y="10" width="310" height="62" rx="12" fill="#e4f4f1" stroke="#0f766e" stroke-width="2"/>
             <text x="609" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">📘 Skills（專屬教學 SOP）</text>
-            <text x="609" y="56" text-anchor="middle" font-size="12" fill="#334155">國語考卷規格 / 4F 規準 / 說數學防誤發</text>
+            <text x="609" y="56" text-anchor="middle" font-size="12" fill="#2a211c">國語考卷規格 / 4F 規準 / 說數學防誤發</text>
 
-            <rect x="454" y="88" width="310" height="62" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
-            <text x="609" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">🔌 MCP &amp; Plugins（外接雙手）</text>
-            <text x="609" y="134" text-anchor="middle" font-size="12" fill="#334155">Padlet / Chrome 瀏覽器 / Google 雲端 / Word</text>
+            <rect x="454" y="88" width="310" height="62" rx="12" fill="#fcebe7" stroke="#b83b28" stroke-width="2"/>
+            <text x="609" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#9f2f1e">🔌 MCP &amp; Plugins（外接雙手）</text>
+            <text x="609" y="134" text-anchor="middle" font-size="12" fill="#2a211c">Padlet / Chrome 瀏覽器 / Google 雲端 / Word</text>
 
             <defs>
               <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 z" fill="#1a56db"/>
+                <path d="M0,0 L8,4 L0,8 z" fill="#0f766e"/>
               </marker>
             </defs>
           </svg>
@@ -797,25 +815,34 @@
       </section>
 
       <!-- Conclusion -->
-      <section class="chapter page-view" id="conclusion" style="background: linear-gradient(135deg, var(--primary-soft), var(--accent-soft)); border: 1.5px solid var(--primary);">
-        <div class="chapter-header" style="border-bottom-color: rgba(26, 86, 219, 0.18);">
+      <section class="chapter page-view conclusion-chapter" id="conclusion">
+        <div class="chapter-header">
           <span class="chapter-kicker">CONCLUSION</span>
           <h2>結語｜寫在最後：把教學想像真正化為現實</h2>
           <p class="chapter-lead">送給每位在教育現場默默耕耘、總想為孩子多做一點的老師夥伴。</p>
         </div>
-        <blockquote style="margin: 0 0 14px; padding: 18px 22px; background: var(--surface); border-left: 5px solid var(--primary); border-radius: 12px; font-size: 17px; font-weight: 700; line-height: 1.8; box-shadow: var(--shadow-sm);">
+        <blockquote class="conclusion-quote">
           「AI 最迷人的價值，在於它能把老師腦海中的教學靈感真正化為現實。過去那些受限於技術門檻、覺得現成工具總差一點或不夠順手的功能，現在我們都能親手打造成真正想用、而且貼近班級需求的專屬好工具。」
         </blockquote>
-        <p style="margin: 0; color: var(--text-muted);">
-          工具永遠是為了成全教育現場的溫度而生。希望這份手冊裡的每一支技能與網頁，都能成為您省下繁瑣行政時間的起點，把更多心力留給教室裡真正重要的人與對話。—— <strong>新進國小 朕 老師</strong>
-        </p>
+        <div class="conclusion-signoff">
+          <p class="conclusion-note">
+            工具永遠是為了成全教育現場的溫度而生。希望這份手冊裡的每一支技能與網頁，都能成為您省下繁瑣行政時間的起點，把更多心力留給教室裡真正重要的人與對話。
+          </p>
+          <div class="author-seal-badge">
+            <img src="./assets/avatar-icon.jpg" alt="新進國小 朕 老師 頭像" width="52" height="52" />
+            <div>
+              <strong>新進國小・朕 老師</strong>
+              <span>Antigravity 教師實戰推廣分享</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <nav id="chapterPager" class="chapter-pager" aria-label="章節翻頁導覽"></nav>
 
       <footer class="footer">
         <div><strong>Google Antigravity 教師實戰推廣手冊</strong>｜新進國小 朕 老師 編著分享</div>
-        <div>已全面隱藏個人 API 金鑰、密碼與學生隱私資料｜最後更新：2026-11-27 23:32</div>
+        <div>已全面隱藏個人 API 金鑰、密碼與學生隱私資料｜最後更新：2026-11-28 11:23</div>
       </footer>
     </main>
   </div>
