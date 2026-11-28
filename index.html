@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="臺南市新進國小 朕 老師實戰整理：從 Google Antigravity 安裝、MCP 設定到 13 套教學現場技能（國語考卷、會考作文批改、說數學影音、社會 4F、輔導系統同步與數學遊戲吧），直接複製範本立即應用在班級。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:title" content="Google Antigravity 教師實戰推廣手冊｜新進國小 朕 老師" />
+  <meta property="og:description" content="從問答聊天進化為會動手幫忙批改、出卷與填表的 AI 助教。收錄 13 套教學實戰技能包、8 套數學遊戲與班級經營工具一鍵建立精靈。" />
+  <meta property="og:image" content="./assets/teacher-avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <script>
+    try {
+      var savedTheme = localStorage.getItem("agy_guide_theme");
+      if (savedTheme === "light" || savedTheme === "dark") {
+        document.querySelector('meta[name="color-scheme"]').content = savedTheme;
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      }
+    } catch (_) {}
+  </script>
   <title>Google Antigravity 教師實戰推廣手冊｜新進國小 朕 老師</title>
   <link rel="icon" type="image/jpeg" href="./assets/avatar-icon.jpg" />
   <link rel="apple-touch-icon" href="./assets/teacher-avatar.jpg" />
@@ -12,36 +29,138 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <!-- Inline Linear SVG Sprite (1.5px stroke) -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="ico-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="18" x2="20" y2="18" />
+      </symbol>
+      <symbol id="ico-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7" />
+        <line x1="16.5" y1="16.5" x2="21" y2="21" />
+      </symbol>
+      <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+      </symbol>
+      <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="2" x2="12" y2="5" />
+        <line x1="12" y1="19" x2="12" y2="22" />
+        <line x1="4.93" y1="4.93" x2="7.05" y2="7.05" />
+        <line x1="16.95" y1="16.95" x2="19.07" y2="19.07" />
+        <line x1="2" y1="12" x2="5" y2="12" />
+        <line x1="19" y1="12" x2="22" y2="12" />
+        <line x1="4.93" y1="19.07" x2="7.05" y2="16.95" />
+        <line x1="16.95" y1="7.05" x2="19.07" y2="4.93" />
+      </symbol>
+      <symbol id="ico-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v12" />
+        <polyline points="7 10 12 15 17 10" />
+        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+      </symbol>
+      <symbol id="ico-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+      </symbol>
+      <symbol id="ico-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="13 6 19 12 13 18" />
+      </symbol>
+      <symbol id="ico-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </symbol>
+      <symbol id="ico-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6" />
+      </symbol>
+      <symbol id="ico-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+      </symbol>
+      <symbol id="ico-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="11" height="11" rx="2" />
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+      </symbol>
+      <symbol id="ico-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="8" y1="13" x2="16" y2="13" />
+        <line x1="8" y1="17" x2="13" y2="17" />
+      </symbol>
+      <symbol id="ico-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16.5 9.4 7.55 4.24" />
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        <polyline points="3.29 7 12 12 20.71 7" />
+        <line x1="12" y1="22" x2="12" y2="12" />
+      </symbol>
+      <symbol id="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </symbol>
+      <symbol id="ico-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </symbol>
+      <symbol id="ico-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="2" width="12" height="20" rx="2" />
+        <line x1="12" y1="18" x2="12.01" y2="18" />
+      </symbol>
+      <symbol id="ico-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="6 3 20 12 6 21 6 3" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#mainContent">跳至主要內容</a>
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
 
   <!-- Topbar -->
-  <header class="topbar">
+  <header class="topbar" id="topbar">
     <div class="brand">
-      <button class="btn menu-toggle" id="menuToggle" aria-label="開啟目錄">☰</button>
+      <button type="button" class="btn btn-icon menu-toggle" id="menuToggle" aria-label="開啟目錄" aria-expanded="false" aria-controls="sidebar">
+        <svg class="ico" aria-hidden="true"><use href="#ico-menu" /></svg>
+      </button>
       <img class="brand-avatar" src="./assets/avatar-icon.jpg" alt="新進國小 朕 老師 Q 版頭像" width="42" height="42" />
       <div class="brand-text">
-        <h1>Google Antigravity 教師實戰推廣手冊</h1>
-        <span>新進國小 朕 老師 實戰分享與教學技能庫</span>
+        <h1>
+          <span class="title-full">Google Antigravity 教師實戰推廣手冊</span>
+          <span class="title-short">Antigravity 教師手冊</span>
+        </h1>
+        <span class="brand-subtitle">新進國小 朕 老師 實戰分享與教學技能庫</span>
       </div>
     </div>
     <div class="topbar-actions">
-      <div class="last-updated-pill" title="本網站內容隨教學新做法持續更新">
-        <span class="update-dot" aria-hidden="true"></span>
-        <span>最後更新：<time datetime="2026-11-28T11:45+08:00">2026-11-28 11:45</time></span>
-      </div>
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
+      <div class="search-box" id="searchBox">
+        <label class="visually-hidden" for="globalSearch">搜尋章節、MCP 或技能</label>
+        <button type="button" class="btn btn-icon search-expand-btn" id="searchExpandBtn" aria-label="開啟搜尋" aria-expanded="false" aria-controls="globalSearch">
+          <svg class="ico" aria-hidden="true"><use href="#ico-search" /></svg>
+        </button>
+        <span class="search-icon" aria-hidden="true">
+          <svg class="ico" aria-hidden="true"><use href="#ico-search" /></svg>
+        </span>
         <input type="search" id="globalSearch" placeholder="搜尋章節、MCP 或技能..." />
+        <button type="button" class="search-collapse-btn" id="searchCollapseBtn" aria-label="關閉搜尋">
+          <svg class="ico" aria-hidden="true"><use href="#ico-close" /></svg>
+        </button>
       </div>
-      <button class="btn layout-toggle-btn" id="layoutToggle" title="切換電腦版／手機版閱讀編排">📱 手機版</button>
-      <button class="btn" id="themeToggle"><span class="theme-icon">🌙</span><span class="hide-on-mobile"> 護眼深色</span></button>
-      <a class="btn btn-primary" href="./Antigravity教師實戰推廣手冊_新進國小朕老師.pdf" download>⬇️ <span class="hide-on-mobile">下載 </span>PDF<span class="hide-on-mobile"> 手冊</span></a>
+      <button type="button" class="btn" id="themeToggle">
+        <svg class="ico" aria-hidden="true"><use href="#ico-moon" /></svg>
+        <span class="hide-on-mobile">護眼深色</span>
+      </button>
+      <a class="btn btn-secondary topbar-pdf-btn" href="./Antigravity教師實戰推廣手冊_新進國小朕老師.pdf" download>
+        <svg class="ico" aria-hidden="true"><use href="#ico-download" /></svg>
+        <span class="hide-on-mobile">下載 </span>PDF<span class="hide-on-mobile"> 手冊</span>
+      </a>
     </div>
   </header>
 
   <div class="layout">
     <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar" aria-label="手冊側邊欄">
       <div class="sidebar-author-card">
         <img class="sidebar-avatar" src="./assets/avatar-icon.jpg" alt="朕 老師 Q 版頭像" width="44" height="44" />
         <div class="sidebar-author-info">
@@ -49,26 +168,33 @@
           <span>教學現場 AI 實戰推廣</span>
         </div>
       </div>
-      <div class="sidebar-section-title">手冊導覽目錄</div>
-      <a class="nav-link active" href="#overview"><span class="nav-num">總覽</span>手冊導讀與技能地圖</a>
-      <a class="nav-link" href="#ch1"><span class="nav-num">Ch 1</span>認識 Antigravity、初次設定與 Turbo</a>
-      <a class="nav-link" href="#ch2"><span class="nav-num">Ch 2</span>必裝 MCP 與外掛設定攻略</a>
-      <a class="nav-link" href="#ch3"><span class="nav-num">Ch 3</span>國語出題與作文診斷紅筆批改</a>
-      <a class="nav-link" href="#ch4"><span class="nav-num">Ch 4</span>說數學與上台發表影音批改</a>
-      <a class="nav-link" href="#ch5"><span class="nav-num">Ch 5</span>社會 4F 反思與題庫匯出</a>
-      <a class="nav-link" href="#ch6"><span class="nav-num">Ch 6</span>數學遊戲吧與開發提示詞攻略</a>
-      <a class="nav-link" href="#ch7"><span class="nav-num">Ch 7</span>導師輔導紀錄與系統同步</a>
-      <a class="nav-link" href="#ch8"><span class="nav-num">Ch 8</span>班級經營（存摺・點歌・作業盤點）</a>
-      <a class="nav-link" href="#ch9"><span class="nav-num">Ch 9</span>技能複製、備份與資安守則</a>
-      <a class="nav-link" href="#conclusion"><span class="nav-num">結語</span>寫在最後的教學心聲</a>
+      <div class="sidebar-section-title" id="sidebarTocHeading">手冊導覽目錄</div>
+      <nav aria-labelledby="sidebarTocHeading">
+        <ul class="sidebar-nav-list">
+          <li><a class="nav-link active" href="#overview"><span class="nav-num">總覽</span>手冊導讀與技能地圖</a></li>
+          <li><a class="nav-link" href="#ch1"><span class="nav-num">Ch 1</span>認識 Antigravity、初次設定與 Turbo</a></li>
+          <li><a class="nav-link" href="#ch2"><span class="nav-num">Ch 2</span>必裝 MCP 與外掛設定攻略</a></li>
+          <li><a class="nav-link" href="#ch3"><span class="nav-num">Ch 3</span>國語出題與作文診斷紅筆批改</a></li>
+          <li><a class="nav-link" href="#ch4"><span class="nav-num">Ch 4</span>說數學與上台發表影音批改</a></li>
+          <li><a class="nav-link" href="#ch5"><span class="nav-num">Ch 5</span>社會 4F 反思與題庫匯出</a></li>
+          <li><a class="nav-link" href="#ch6"><span class="nav-num">Ch 6</span>數學遊戲吧與開發提示詞攻略</a></li>
+          <li><a class="nav-link" href="#ch7"><span class="nav-num">Ch 7</span>導師輔導紀錄與系統同步</a></li>
+          <li><a class="nav-link" href="#ch8"><span class="nav-num">Ch 8</span>班級經營（存摺・點歌・作業盤點）</a></li>
+          <li><a class="nav-link" href="#ch9"><span class="nav-num">Ch 9</span>技能複製、備份與資安守則</a></li>
+          <li><a class="nav-link" href="#conclusion"><span class="nav-num">結語</span>寫在最後的教學心聲</a></li>
+        </ul>
+      </nav>
 
       <div class="sidebar-section-title">閱讀版型與設定</div>
-      <div style="padding: 0 8px 12px;">
-        <button class="btn" id="sidebarLayoutToggle" style="width:100%;justify-content:center;font-size:13px;">🔄 切換電腦／手機閱讀版</button>
+      <div class="sidebar-setting-box">
+        <button type="button" class="btn sidebar-layout-btn" id="sidebarLayoutToggle">
+          <svg class="ico" aria-hidden="true"><use href="#ico-smartphone" /></svg>
+          <span>切換為手機閱讀版編排</span>
+        </button>
       </div>
 
-      <div class="sidebar-section-title">快速篩選技能</div>
-      <div style="padding: 0 8px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+      <div class="sidebar-section-title">資料去敏說明</div>
+      <div class="sidebar-note">
         本手冊所有 <strong>API 金鑰、密碼與學生個資皆已完全去敏隱藏</strong>，同事老師可直接複製 <code class="inline">SKILL.md</code> 範本並填入個人環境設定即可啟用。
       </div>
     </aside>
@@ -80,10 +206,17 @@
         <span class="mobile-mode-tag">📱 手機閱讀版</span>
         <span>🕒 最後更新：<time datetime="2026-11-28T11:45+08:00">2026-11-28 11:45</time></span>
       </div>
+
       <div id="searchStatusBanner" class="search-banner">
-        <span id="searchStatusText"></span>
-        <button class="btn" id="clearSearchBtn">✕ 清除搜尋返回單章閱讀</button>
+        <span id="searchStatusText" role="status"></span>
+        <button type="button" class="btn" id="clearSearchBtn">
+          <svg class="ico" aria-hidden="true"><use href="#ico-close" /></svg>
+          <span>清除搜尋返回單章閱讀</span>
+        </button>
       </div>
+
+      <!-- Dedicated Search Results View (never reveals #overview Hero) -->
+      <section id="searchResultsView" class="search-results-view" aria-label="搜尋結果"></section>
 
       <!-- Overview Page -->
       <div class="page-view active-page" id="overview">
@@ -101,24 +234,32 @@
             </p>
             <div class="hero-meta">
               <div class="hero-stat">📦 4 大必裝 MCP 生態</div>
-              <div class="hero-stat">🎓 13 支教學實戰技能</div>
-              <div class="hero-stat">🎮 8 套自研數學遊戲＋提示詞</div>
-              <div class="hero-stat">🏫 3 大班級經營系統＋一鍵建立精靈</div>
-              <div class="hero-stat">🔒 金鑰、密碼與學生隱私全面去敏</div>
-              <a class="btn hero-pdf-btn" href="./Antigravity教師實戰推廣手冊_新進國小朕老師.pdf" download>📥 下載精裝推廣手冊 (PDF)</a>
+              <div class="hero-stat">🎓 13 支技能＋8 套數學遊戲</div>
+              <div class="hero-stat">🔒 金鑰與學生隱私全面去敏</div>
+            </div>
+            <div class="hero-cta-row">
+              <button type="button" class="btn btn-hero-primary" id="heroStartBtn" data-goto-page="ch1">
+                <svg class="ico" aria-hidden="true"><use href="#ico-rocket" /></svg>
+                <span>新手 5 分鐘入門（第 1 章）</span>
+                <svg class="ico" aria-hidden="true"><use href="#ico-arrow-right" /></svg>
+              </button>
+              <a class="btn btn-hero-secondary" href="./Antigravity教師實戰推廣手冊_新進國小朕老師.pdf" download>
+                <svg class="ico" aria-hidden="true"><use href="#ico-download" /></svg>
+                <span>下載精裝推廣手冊 (PDF)</span>
+              </a>
             </div>
           </div>
           <div class="hero-visual-pair">
             <div class="hero-avatar-showcase">
               <div class="hero-avatar-frame">
-                <img src="./assets/teacher-avatar.jpg" alt="新進國小 朕 老師 Q 版跑者教師頭像" />
+                <img src="./assets/teacher-avatar.jpg" alt="新進國小 朕 老師 Q 版跑者教師頭像" width="200" height="200" />
               </div>
               <div class="hero-avatar-caption">🖌️ <strong>新進國小・朕 老師</strong></div>
             </div>
             <aside class="memorial-scroll" aria-label="御筆前言奏摺">
               <div class="memorial-inner">
                 <div class="memorial-heading"><span class="memorial-zou">奏</span><span>前言</span></div>
-                <p class="memorial-body">聘一個老師的專業助理，交代它，使命必達。</p>
+                <p class="memorial-body"><span class="memorial-line">聘一個老師的專業助理，</span><span class="memorial-line">交代它，使命必達。</span></p>
                 <div class="memorial-seal" aria-hidden="true">朕閱</div>
               </div>
             </aside>
@@ -131,30 +272,56 @@
         <div class="chapter-header">
           <span class="chapter-kicker">QUICK MAP</span>
           <h2>教師現場 13 套實戰技能總覽地圖</h2>
-          <p class="chapter-lead">您可以依授課領域或行政需求快速篩選，或直接點擊表格右側下載完整技能包（.zip）／跳轉至對應章節複製範本。</p>
-          <div style="margin-top:12px;">
-            <a class="btn btn-accent" href="./downloads/all-teacher-skills.zip" download>📦 一鍵下載全部 13 套教學技能合輯 (.zip)</a>
+          <p class="chapter-lead">您可以依授課領域或行政需求快速篩選，或直接點擊右側下載技能包（.zip）／前往對應章節複製範本。</p>
+
+          <ol class="onboarding-strip" aria-label="新手 3 步上手順序">
+            <li>
+              <button type="button" class="onboarding-step-link" data-goto-page="ch1">
+                <span class="step-num">1</span>
+                <span>第 1 章裝好 Antigravity</span>
+              </button>
+            </li>
+            <li class="onboarding-arrow" aria-hidden="true">→</li>
+            <li>
+              <button type="button" class="onboarding-step-link" data-goto-page="ch2">
+                <span class="step-num">2</span>
+                <span>第 2 章接上 Padlet / Chrome</span>
+              </button>
+            </li>
+            <li class="onboarding-arrow" aria-hidden="true">→</li>
+            <li class="onboarding-step-static">
+              <span class="step-num">3</span>
+              <span>從下方挑一套教學技能下載</span>
+            </li>
+          </ol>
+
+          <div class="chapter-actions">
+            <a class="btn btn-accent" href="./downloads/all-teacher-skills.zip" download>
+              <svg class="ico" aria-hidden="true"><use href="#ico-package" /></svg>
+              <span>一鍵下載全部 13 套教學技能合輯 (.zip)</span>
+            </a>
           </div>
         </div>
 
-        <div class="filter-bar" id="skillFilterBar">
-          <button class="chip active" data-filter="all">全部技能 (13)</button>
-          <button class="chip" data-filter="語文評量">📚 語文評量 (4)</button>
-          <button class="chip" data-filter="影音批改">🎙️ 影音批改 (3)</button>
-          <button class="chip" data-filter="社會與題庫">🌏 社會與題庫 (2)</button>
-          <button class="chip" data-filter="互動教具">🧪 互動教具 (1)</button>
-          <button class="chip" data-filter="導師行政">📋 導師行政 (2)</button>
-          <button class="chip" data-filter="系統與分享">🛡️ 系統與分享 (1)</button>
+        <div class="filter-bar" id="skillFilterBar" role="group" aria-label="技能教學分類篩選">
+          <button type="button" class="chip active" data-filter="all" aria-pressed="true">全部技能 (13)</button>
+          <button type="button" class="chip" data-filter="語文評量" aria-pressed="false"><span aria-hidden="true">📚</span> 語文評量 (4)</button>
+          <button type="button" class="chip" data-filter="影音批改" aria-pressed="false"><span aria-hidden="true">🎙️</span> 影音批改 (3)</button>
+          <button type="button" class="chip" data-filter="社會與題庫" aria-pressed="false"><span aria-hidden="true">🌏</span> 社會與題庫 (2)</button>
+          <button type="button" class="chip" data-filter="互動教具" aria-pressed="false"><span aria-hidden="true">🧪</span> 互動教具 (1)</button>
+          <button type="button" class="chip" data-filter="導師行政" aria-pressed="false"><span aria-hidden="true">📋</span> 導師行政 (2)</button>
+          <button type="button" class="chip" data-filter="系統與分享" aria-pressed="false"><span aria-hidden="true">🛡️</span> 系統與分享 (1)</button>
         </div>
 
-        <div class="table-wrap">
+        <div class="table-wrap overview-matrix-wrap" tabindex="0" role="region" aria-labelledby="skillMatrixCaption">
           <table>
+            <caption id="skillMatrixCaption" class="visually-hidden">教師現場 13 套實戰技能總覽對照表</caption>
             <thead>
               <tr>
-                <th>技能名稱與資料夾 ID</th>
-                <th>教學分類</th>
-                <th>常用喚醒指令 / 關鍵字</th>
-                <th>操作</th>
+                <th scope="col">技能名稱與教學效益</th>
+                <th scope="col">教學分類</th>
+                <th scope="col">常用喚醒指令 / 關鍵字</th>
+                <th scope="col">操作</th>
               </tr>
             </thead>
             <tbody id="skillMatrixBody"></tbody>
@@ -176,31 +343,31 @@
 
         <div class="diagram-box">
           <svg width="780" height="165" viewBox="0 0 780 165" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Antigravity 教師工作流架構圖">
-            <rect x="10" y="38" width="160" height="86" rx="12" fill="#fef4da" stroke="#c98a1b" stroke-width="2"/>
-            <text x="90" y="72" text-anchor="middle" font-size="15" font-weight="700" fill="#7c4a08">👩‍🏫 老師一句話指令</text>
-            <text x="90" y="96" text-anchor="middle" font-size="12" fill="#4a3b32">貼照片 / 給網址 / 說需求</text>
+            <rect x="10" y="38" width="160" height="86" rx="12" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-stroke)" stroke-width="2"/>
+            <text x="90" y="72" text-anchor="middle" font-size="15" font-weight="700" fill="var(--svg-gold-text)">👩‍🏫 老師一句話指令</text>
+            <text x="90" y="96" text-anchor="middle" font-size="12" fill="var(--svg-text-muted)">貼照片 / 給網址 / 說需求</text>
 
-            <line x1="170" y1="81" x2="215" y2="81" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
+            <line x1="170" y1="81" x2="215" y2="81" stroke="var(--primary)" stroke-width="2.5" marker-end="url(#arrow-ch1)"/>
 
-            <rect x="218" y="25" width="180" height="112" rx="14" fill="#133b40"/>
-            <text x="308" y="64" text-anchor="middle" font-size="16" font-weight="800" fill="#fde68a">🧠 Antigravity</text>
-            <text x="308" y="88" text-anchor="middle" font-size="12" fill="#e4f4f1">理解意圖 × 規劃步驟</text>
-            <text x="308" y="108" text-anchor="middle" font-size="12" fill="#e4f4f1">多模態看圖聽影判讀</text>
+            <rect x="218" y="25" width="180" height="112" rx="14" fill="var(--svg-hub-bg)"/>
+            <text x="308" y="64" text-anchor="middle" font-size="16" font-weight="800" fill="var(--svg-hub-text)">🧠 Antigravity</text>
+            <text x="308" y="88" text-anchor="middle" font-size="12" fill="var(--svg-hub-sub)">理解意圖 × 規劃步驟</text>
+            <text x="308" y="108" text-anchor="middle" font-size="12" fill="var(--svg-hub-sub)">多模態看圖聽影判讀</text>
 
-            <line x1="398" y1="58" x2="450" y2="45" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
-            <line x1="398" y1="104" x2="450" y2="117" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrow)"/>
+            <line x1="398" y1="58" x2="450" y2="45" stroke="var(--primary)" stroke-width="2.5" marker-end="url(#arrow-ch1)"/>
+            <line x1="398" y1="104" x2="450" y2="117" stroke="var(--primary)" stroke-width="2.5" marker-end="url(#arrow-ch1)"/>
 
-            <rect x="454" y="10" width="310" height="62" rx="12" fill="#e4f4f1" stroke="#0f766e" stroke-width="2"/>
-            <text x="609" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">📘 Skills（專屬教學 SOP）</text>
-            <text x="609" y="56" text-anchor="middle" font-size="12" fill="#2a211c">國語考卷規格 / 4F 規準 / 說數學防誤發</text>
+            <rect x="454" y="10" width="310" height="62" rx="12" fill="var(--svg-primary-bg)" stroke="var(--svg-primary-stroke)" stroke-width="2"/>
+            <text x="609" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="var(--svg-primary-text)">📘 Skills（專屬教學 SOP）</text>
+            <text x="609" y="56" text-anchor="middle" font-size="12" fill="var(--svg-text)">國語考卷規格 / 4F 規準 / 說數學防誤發</text>
 
-            <rect x="454" y="88" width="310" height="62" rx="12" fill="#fcebe7" stroke="#b83b28" stroke-width="2"/>
-            <text x="609" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#9f2f1e">🔌 MCP &amp; Plugins（外接雙手）</text>
-            <text x="609" y="134" text-anchor="middle" font-size="12" fill="#2a211c">Padlet / Chrome 瀏覽器 / Google 雲端 / Word</text>
+            <rect x="454" y="88" width="310" height="62" rx="12" fill="var(--svg-accent-bg)" stroke="var(--svg-accent-stroke)" stroke-width="2"/>
+            <text x="609" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="var(--svg-accent-text)">🔌 MCP &amp; Plugins（外接雙手）</text>
+            <text x="609" y="134" text-anchor="middle" font-size="12" fill="var(--svg-text)">Padlet / Chrome 瀏覽器 / Google 雲端 / Word</text>
 
             <defs>
-              <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 z" fill="#0f766e"/>
+              <marker id="arrow-ch1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 z" fill="var(--primary)"/>
               </marker>
             </defs>
           </svg>
@@ -231,12 +398,15 @@
           <li><strong>認識對話輸入框下方選單並測試一句指令</strong>：在對話框下方可切換 <strong>執行模式</strong>（<code class="inline">Planning</code> 先列計畫再執行、<code class="inline">Fast</code> 快速處理）與 <strong>Gemini 模型</strong>。試著輸入「幫我在工作區建立一個『六上期中備課』資料夾」，看到 AI 成功建立資料夾即大功告成！</li>
         </ol>
 
-        <div class="callout" style="border-left: 5px solid #dc2626; background: linear-gradient(135deg, rgba(220,38,38,0.06), rgba(26,86,219,0.05));">
+        <div class="callout video">
           <span class="callout-title">🎬 新手跟著影片一步步設定：Antigravity 初次使用與設定教學</span>
           第一次開啟不知從哪裡點選嗎？歡迎直接觀看下方的操作教學影片，畫面與步驟都示範得很清楚，老師可以邊看邊跟著設定：
-          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:12px;">
-            <a class="btn btn-primary" style="background:#dc2626; border-color:#dc2626;" href="https://youtu.be/LyiiMVZE7uM?si=lvAROrnxT8u03DsU" target="_blank" rel="noopener noreferrer">▶️ 前往 YouTube 觀看設定教學影片</a>
-            <code class="inline" style="font-size:13px;">https://youtu.be/LyiiMVZE7uM?si=lvAROrnxT8u03DsU</code>
+          <div class="callout-actions">
+            <a class="btn btn-youtube" href="https://youtu.be/LyiiMVZE7uM?si=lvAROrnxT8u03DsU" target="_blank" rel="noopener noreferrer">
+              <svg class="ico" aria-hidden="true"><use href="#ico-play" /></svg>
+              <span>前往 YouTube 觀看設定教學影片</span>
+            </a>
+            <code class="inline url-chip">https://youtu.be/LyiiMVZE7uM?si=lvAROrnxT8u03DsU</code>
           </div>
         </div>
 
@@ -246,7 +416,7 @@
         <div class="grid-2">
           <div class="info-card">
             <h4>⚡ 四步驟切換為 Turbo 模式</h4>
-            <ol style="margin-bottom:0; padding-left:20px;">
+            <ol class="card-list">
               <li>點開左側欄或右上角的 <strong>齒輪圖示 ⚙️（Settings）</strong>（快捷鍵 <code class="inline">Ctrl + ,</code>／Mac 為 <code class="inline">Cmd + ,</code>），進入 <strong>Agent Settings（代理程式設定）</strong>；部分版本也可直接在對話輸入框附近的權限下拉選單快速切換。</li>
               <li>找到 <strong>Terminal Command Auto Execution（終端機指令自動執行）</strong> 或 <strong>Review Policy（審查政策 / Permission Preset）</strong>。</li>
               <li>將預設的 <em>Request Review（每次詢問）</em> 或 <em>Auto</em> 切換為 <strong>Turbo</strong>（部分版本介面顯示為 <strong>Always Proceed／永遠自動執行</strong>）。</li>
@@ -255,7 +425,7 @@
           </div>
           <div class="info-card">
             <h4>🛡️ 開 Turbo 安全嗎？老師必看的兩道雙重保障</h4>
-            <ul style="margin-bottom:0; padding-left:20px;">
+            <ul class="card-list">
               <li><strong>系統面：保留 Deny List（指令黑名單）</strong>：Turbo 模式會略過「逐次按確認」，但只要保留黑名單中的高風險系統指令（例如 <code class="inline">rm -rf</code>、格式化等破壞性命令），AI 就絕不會執行毀損電腦的動作。</li>
               <li><strong>教學面：技能內建「先審核、後發布」鎖</strong>：開 Turbo 只加速<strong>本機讀檔、轉檔、截圖與排版</strong>；本手冊第 3、4、7 章凡是「對學生 Padlet 留言」或「寫入臺南市輔導系統」的技能，都已在 <code class="inline">SKILL.md</code> 寫死必須等老師點頭確認名單與內容才允許送出！</li>
               <li><strong>彈性切回</strong>：若您偶爾要測試陌生來源的網路專案，隨時回到 Settings 切回 <code class="inline">Request Review</code> 即可。</li>
@@ -267,9 +437,9 @@
         <div class="callout accent">
           <span class="callout-title">🇹🇼 擔心全英文介面不好上手？推薦套用「Antigravity 2.29+ 繁體中文化修復版」</span>
           由臺灣嘉義國中 <strong>奕鈞老師（IJUN AI 奕鈞老師數位教學備課室）</strong> 整理分享，涵蓋超過 1,000 筆符合臺灣教育與日常慣用語的深度介面翻譯（含主介面、設定、Agent 面板與 MCP 選單），並修復部分系統容易發生的強制閃退問題，同時支援 Windows 與 macOS：
-          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:12px;">
+          <div class="callout-actions">
             <a class="btn btn-accent" href="https://share.google/3Vk4xsE6VyfaxJSmb" target="_blank" rel="noopener noreferrer">🇹🇼 Antigravity 2.29+ 繁體中文化修復版（臺灣用語）完整介紹與安裝教學｜奕鈞老師 ↗</a>
-            <code class="inline" style="font-size:13px;">https://share.google/3Vk4xsE6VyfaxJSmb</code>
+            <code class="inline url-chip">https://share.google/3Vk4xsE6VyfaxJSmb</code>
           </div>
         </div>
 
@@ -290,14 +460,15 @@
         </div>
 
         <h3>2.1 朕 老師實測必裝的核心 MCP 清單</h3>
-        <div class="table-wrap">
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="mcpTableCaption">
           <table>
+            <caption id="mcpTableCaption" class="visually-hidden">實測必裝的核心 MCP 與外掛清單</caption>
             <thead>
               <tr>
-                <th>MCP / 外掛名稱</th>
-                <th>對應工具與套件</th>
-                <th>在教學現場幫老師做什麼？</th>
-                <th>需額外申請金鑰嗎？</th>
+                <th scope="col">MCP / 外掛名稱</th>
+                <th scope="col">對應工具與套件</th>
+                <th scope="col">在教學現場幫老師做什麼？</th>
+                <th scope="col">需額外申請金鑰嗎？</th>
               </tr>
             </thead>
             <tbody>
@@ -341,7 +512,10 @@
         <div class="code-block">
           <div class="code-header">
             <span>mcp_config.json（安全去敏範本）</span>
-            <button class="copy-btn" data-copy-code>複製設定檔</button>
+            <button type="button" class="copy-btn" data-copy-code>
+              <svg class="ico" aria-hidden="true"><use href="#ico-copy" /></svg>
+              <span>複製設定檔</span>
+            </button>
           </div>
           <pre>{
   "mcpServers": {
@@ -388,49 +562,52 @@
 
         <div class="diagram-box">
           <svg width="780" height="122" viewBox="0 0 780 122" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="作文診斷與紅筆批改人機協作流程圖">
-            <rect x="8" y="24" width="166" height="72" rx="10" fill="#eaf1ff" stroke="#1a56db" stroke-width="1.8"/>
-            <text x="91" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#163a70">1. 師定標準與目的</text>
-            <text x="91" y="70" text-anchor="middle" font-size="11.5" fill="#334155">會考六級分＋該次寫作目的</text>
-            <text x="91" y="86" text-anchor="middle" font-size="10.5" fill="#475569">輸入手寫作文掃描 PDF</text>
+            <rect x="8" y="24" width="166" height="72" rx="10" fill="var(--svg-info-bg)" stroke="var(--svg-info-stroke)" stroke-width="1.8"/>
+            <text x="91" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-info-text)">1. 師定標準與目的</text>
+            <text x="91" y="70" text-anchor="middle" font-size="11.5" fill="var(--svg-text)">會考六級分＋該次寫作目的</text>
+            <text x="91" y="86" text-anchor="middle" font-size="10.5" fill="var(--svg-text-muted)">輸入手寫作文掃描 PDF</text>
 
-            <text x="184" y="65" font-size="18" font-weight="700" fill="#1a56db">→</text>
+            <text x="184" y="65" font-size="18" font-weight="700" fill="var(--svg-info-stroke)">→</text>
 
-            <rect x="204" y="24" width="176" height="72" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/>
-            <text x="292" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">2. 診斷書＋師審定案</text>
-            <text x="292" y="70" text-anchor="middle" font-size="11.5" fill="#334155">產出逐字稿/評析/升級範文</text>
-            <text x="292" y="86" text-anchor="middle" font-size="10.5" fill="#92400e">暫停等待老師看過定案</text>
+            <rect x="204" y="24" width="176" height="72" rx="10" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-stroke)" stroke-width="1.8"/>
+            <text x="292" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-gold-text)">2. 診斷書＋師審定案</text>
+            <text x="292" y="70" text-anchor="middle" font-size="11.5" fill="var(--svg-text)">產出逐字稿/評析/升級範文</text>
+            <text x="292" y="86" text-anchor="middle" font-size="10.5" fill="var(--svg-gold-text)">暫停等待老師看過定案</text>
 
-            <text x="390" y="65" font-size="18" font-weight="700" fill="#1a56db">→</text>
+            <text x="390" y="65" font-size="18" font-weight="700" fill="var(--svg-gold-stroke)">→</text>
 
-            <rect x="410" y="24" width="174" height="72" rx="10" fill="#fce7f3" stroke="#be123c" stroke-width="1.8"/>
-            <text x="497" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#9f1239">3. 依報告書紅筆批改</text>
-            <text x="497" y="70" text-anchor="middle" font-size="11.5" fill="#334155">大字標楷套印原卷＋白底框</text>
-            <text x="497" y="86" text-anchor="middle" font-size="10.5" fill="#9f1239">網格定位與轉圖雙驗收</text>
+            <rect x="410" y="24" width="174" height="72" rx="10" fill="var(--svg-accent-bg)" stroke="var(--svg-accent-stroke)" stroke-width="1.8"/>
+            <text x="497" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-accent-text)">3. 依報告書紅筆批改</text>
+            <text x="497" y="70" text-anchor="middle" font-size="11.5" fill="var(--svg-text)">大字標楷套印原卷＋白底框</text>
+            <text x="497" y="86" text-anchor="middle" font-size="10.5" fill="var(--svg-accent-text)">網格定位與轉圖雙驗收</text>
 
-            <text x="594" y="65" font-size="18" font-weight="700" fill="#0f766e">→</text>
+            <text x="594" y="65" font-size="18" font-weight="700" fill="var(--primary)">→</text>
 
-            <rect x="614" y="24" width="158" height="72" rx="10" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.8"/>
-            <text x="693" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">4. Padlet 分欄發布</text>
-            <text x="693" y="70" text-anchor="middle" font-size="11.5" fill="#334155">01～26 座號一次收齊</text>
-            <text x="693" y="86" text-anchor="middle" font-size="10.5" fill="#0f766e">原稿＋診斷書＋紅筆卷</text>
+            <rect x="614" y="24" width="158" height="72" rx="10" fill="var(--svg-primary-bg)" stroke="var(--svg-primary-stroke)" stroke-width="1.8"/>
+            <text x="693" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-primary-text)">4. Padlet 分欄發布</text>
+            <text x="693" y="70" text-anchor="middle" font-size="11.5" fill="var(--svg-text)">01～26 座號一次收齊</text>
+            <text x="693" y="86" text-anchor="middle" font-size="10.5" fill="var(--svg-primary-text)">原稿＋診斷書＋紅筆卷</text>
           </svg>
         </div>
 
         <div class="callout accent">
           <span class="callout-title">✒️ 實戰案例：607 班「校慶徵文（26 篇原創寓言）」全自動診斷與紅筆原卷批改</span>
-          針對全班 26 篇手寫原稿 PDF，朕 老師先設定「會考六級分規準＋必須原創寓言、不得沿用舊作情節」的寫作目的，由 <code class="inline">essay-diagnostic-report</code> 批次產出 26 份本機 A4 Word 診斷報告書與六級分升級範文彙編，經老師審閱定案後，再啟動 <code class="inline">red-pen-essay-review</code> 依報告書產出<strong>大字清晰版紅筆批改 PDF</strong>（滿頁自動附空白末頁放置綜合診斷框，並逐頁轉圖確認紅圈完全對位不壓字），最後讓 Padlet 每個座號欄位都同時擁有「原稿掃描、寫作診斷報告書、紅筆原卷批改」三份完整檔案，學生與家長在手機上點開即可直接線上翻閱學習！
+          針對全班 26 篇手寫原稿 PDF，朕 老師先設定「會考六級分規準＋必須原創寓言、不得沿用舊作情節」的寫作目的，由「會考六級分作文診斷報告書」技能批次產出 26 份本機 A4 Word 診斷報告書與六級分升級範文彙編，經老師審閱定案後，再啟動「原卷紅筆大字批改」依報告書產出<strong>大字清晰版紅筆批改 PDF</strong>（滿頁自動附空白末頁放置綜合診斷框，並逐頁轉圖確認紅圈完全對位不壓字），最後讓 Padlet 每個座號欄位都同時擁有「原稿掃描、寫作診斷報告書、紅筆原卷批改」三份完整檔案，學生與家長在手機上點開即可直接線上翻閱學習！
         </div>
 
-        <div class="callout" style="border-left: 5px solid #1a56db; background: linear-gradient(135deg, rgba(26,86,219,0.06), rgba(15,118,110,0.06));">
+        <div class="callout info">
           <span class="callout-title">📦 作文批改三合一完整技能包（已去敏・下載解壓縮即用）</span>
           想直接把「<strong>會考診斷報告書 ＋ 紅筆原卷批改腳本 ＋ Padlet 作文自動發布腳本</strong>」裝進自己的 Antigravity 嗎？下方提供完整壓縮包（含 <code class="inline">SKILL.md</code> 與 Python／Node.js 執行腳本，已移除個人金鑰與帳號），解壓縮放入 <code class="inline">%USERPROFILE%\.gemini\config\skills\</code> 並重開 Antigravity 即可啟用！
-          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
-            <a class="btn btn-primary" href="./downloads/essay-skills-bundle-3in1.zip" download>⬇️ 一次打包下載全部 3 個作文技能 (ZIP)</a>
+          <div class="callout-actions">
+            <a class="btn btn-primary" href="./downloads/essay-skills-bundle-3in1.zip" download>
+              <svg class="ico" aria-hidden="true"><use href="#ico-download" /></svg>
+              <span>一次打包下載全部 3 個作文技能 (ZIP)</span>
+            </a>
             <a class="btn" href="./downloads/essay-diagnostic-report.zip" download>1️⃣ 下載：會考六級分診斷報告書 (.zip)</a>
             <a class="btn" href="./downloads/red-pen-essay-review.zip" download>2️⃣ 下載：原卷紅筆大字批改＋腳本 (.zip)</a>
             <a class="btn" href="./downloads/padlet-composition-publisher.zip" download>3️⃣ 下載：Padlet 作文分欄發布＋腳本 (.zip)</a>
           </div>
-          <p style="margin:10px 0 0; font-size:13px; color:var(--text-muted);">
+          <p class="callout-note">
             💡 環境備註：<code class="inline">red-pen-essay-review</code> 需在技能目錄執行 <code class="inline">python -m venv .venv</code> 並 <code class="inline">pip install -r requirements.txt</code>；<code class="inline">padlet-composition-publisher</code> 需本機 Microsoft Word、Node.js 與個人 <code class="inline">PADLET_API_KEY</code>。
           </p>
         </div>
@@ -447,27 +624,27 @@
 
         <div class="diagram-box">
           <svg width="780" height="120" viewBox="0 0 780 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="影音批改人機共審流程圖">
-            <rect x="10" y="25" width="140" height="68" rx="10" fill="#eaf1ff" stroke="#1a56db" stroke-width="1.8"/>
-            <text x="80" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#163a70">1. 下載 Padlet</text>
-            <text x="80" y="74" text-anchor="middle" font-size="12" fill="#334155">.mov / .mp4 影片</text>
+            <rect x="10" y="25" width="140" height="68" rx="10" fill="var(--svg-info-bg)" stroke="var(--svg-info-stroke)" stroke-width="1.8"/>
+            <text x="80" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-info-text)">1. 下載 Padlet</text>
+            <text x="80" y="74" text-anchor="middle" font-size="12" fill="var(--svg-text-muted)">.mov / .mp4 影片</text>
 
-            <text x="166" y="64" font-size="18" font-weight="700" fill="#1a56db">→</text>
+            <text x="166" y="64" font-size="18" font-weight="700" fill="var(--svg-info-stroke)">→</text>
 
-            <rect x="190" y="25" width="160" height="68" rx="10" fill="#eaf1ff" stroke="#1a56db" stroke-width="1.8"/>
-            <text x="270" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#163a70">2. 多模態 AI 診斷</text>
-            <text x="270" y="74" text-anchor="middle" font-size="12" fill="#334155">時間軸逐字稿＋規準判讀</text>
+            <rect x="190" y="25" width="160" height="68" rx="10" fill="var(--svg-info-bg)" stroke="var(--svg-info-stroke)" stroke-width="1.8"/>
+            <text x="270" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-info-text)">2. 多模態 AI 診斷</text>
+            <text x="270" y="74" text-anchor="middle" font-size="12" fill="var(--svg-text-muted)">時間軸逐字稿＋規準判讀</text>
 
-            <text x="366" y="64" font-size="18" font-weight="700" fill="#1a56db">→</text>
+            <text x="366" y="64" font-size="18" font-weight="700" fill="var(--svg-gold-stroke)">→</text>
 
-            <rect x="390" y="25" width="175" height="68" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/>
-            <text x="477" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">3. 教師審核把關</text>
-            <text x="477" y="74" text-anchor="middle" font-size="12" fill="#334155">HTML 審核表 / Word 總表</text>
+            <rect x="390" y="25" width="175" height="68" rx="10" fill="var(--svg-gold-bg)" stroke="var(--svg-gold-stroke)" stroke-width="1.8"/>
+            <text x="477" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-gold-text)">3. 教師審核把關</text>
+            <text x="477" y="74" text-anchor="middle" font-size="12" fill="var(--svg-text-muted)">HTML 審核表 / Word 總表</text>
 
-            <text x="581" y="64" font-size="18" font-weight="700" fill="#0f766e">→</text>
+            <text x="581" y="64" font-size="18" font-weight="700" fill="var(--primary)">→</text>
 
-            <rect x="605" y="25" width="165" height="68" rx="10" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.8"/>
-            <text x="687" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">4. 一鍵批次留言</text>
-            <text x="687" y="74" text-anchor="middle" font-size="12" fill="#334155">核可後安全回填 Padlet</text>
+            <rect x="605" y="25" width="165" height="68" rx="10" fill="var(--svg-primary-bg)" stroke="var(--svg-primary-stroke)" stroke-width="1.8"/>
+            <text x="687" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="var(--svg-primary-text)">4. 一鍵批次留言</text>
+            <text x="687" y="74" text-anchor="middle" font-size="12" fill="var(--svg-text-muted)">核可後安全回填 Padlet</text>
           </svg>
         </div>
 
@@ -489,7 +666,7 @@
         <div class="callout accent">
           <span class="callout-title">🧠 朕 老師實戰關鍵心法：把網頁題庫變成「AI 審題與出題資料庫」</span>
           透過 Chrome DevTools MCP 從翰林雲端命題大師自動匯出依題型分檔的 Markdown（<code class="inline">.md</code>）題庫後，這些檔案就成為 Antigravity 最強大的在地參考資料庫：
-          <ul style="margin: 8px 0 0; padding-left: 20px;">
+          <ul class="callout-list">
             <li><strong>🔍 輔助段考審題健檢</strong>：把出好的考卷丟給 AI，請它對照匯出的題庫檢查「是否與歷屆重複」、「考點涵蓋是否平均」、「選項誘答有無爭議」。</li>
             <li><strong>✍️ 精準 AI 變體出題</strong>：在對話中用 <code class="inline">@</code> 指定匯出的題庫 <code class="inline">.md</code> 檔，請 AI 嚴格參照課綱知識點與命題語氣，自動生成「素養閱讀題組」、「易錯觀念延伸題」或「補救教學複習卷」，不再天馬行空偏離教材！</li>
           </ul>
@@ -498,7 +675,10 @@
         <div class="code-block">
           <div class="code-header">
             <span>💬 匯出題庫後對 AI 下指令：審題 &amp; 智慧出題示範</span>
-            <button class="copy-btn" data-copy-code>複製指令</button>
+            <button type="button" class="copy-btn" data-copy-code>
+              <svg class="ico" aria-hidden="true"><use href="#ico-copy" /></svg>
+              <span>複製指令</span>
+            </button>
           </div>
           <pre>請讀取我匯出的《社會第十一冊_選擇題.md》與《00_題庫總覽.md》資料庫：
 1.【審題模式】比對我附上的這次期中考初稿，幫我檢查哪些題目考點重複、語意不夠嚴謹，或四個選項中有誘答力不足的地方。
@@ -607,7 +787,10 @@
         <div class="code-block">
           <div class="code-header">
             <span>💬 提示詞範本 A｜運算精熟型互動遊戲（可直接複製修改單元主題）</span>
-            <button class="copy-btn" data-copy-code>複製提示詞</button>
+            <button type="button" class="copy-btn" data-copy-code>
+              <svg class="ico" aria-hidden="true"><use href="#ico-copy" /></svg>
+              <span>複製提示詞</span>
+            </button>
           </div>
           <pre>請幫我用純前端（HTML5 + CSS + 原生 JavaScript + Web Audio API 合成音效，零外部套件、可 100% 離線執行）開發一款給國小【中年級】練習【九九乘法反向填空，如 7 × [ ] = 56】的互動數學遊戲，需求如下：
 1. 【玩法與防挫折】：採用太空砲台射擊或消消樂玩法，支援「冒險闖關（分波次進階）」、「30秒極速挑戰」與「自由練習（無限生命＋自選想練的乘數）」三種模式。
@@ -619,7 +802,10 @@
         <div class="code-block">
           <div class="code-header">
             <span>💬 提示詞範本 B｜幾何公式探究互動實驗室（可直接複製修改數學單元）</span>
-            <button class="copy-btn" data-copy-code>複製提示詞</button>
+            <button type="button" class="copy-btn" data-copy-code>
+              <svg class="ico" aria-hidden="true"><use href="#ico-copy" /></svg>
+              <span>複製提示詞</span>
+            </button>
           </div>
           <pre>請幫我製作一個適合教室電子白板投影、也適合學生 iPad 動手操作的「【國小六年級圓面積公式推導】互動探究實驗室」網頁：
 1. 【化抽象為視覺步驟】：設計 3 個漸進頁籤——「1. 動態切割展開（可拉動滑桿調整 8/16/32/64 等分，動畫呈現扇形拼成長方形與等腰三角形）」、「2. 生活情境應用（例如比較兩個小披薩 vs 一個大披薩哪個面積大）」、「3. 階梯挑戰題庫（含思考提示與教師板書詳解切換）」。
@@ -630,7 +816,10 @@
         <div class="code-block">
           <div class="code-header">
             <span>💬 提示詞範本 C｜進階加值：幫現有遊戲接上「Google 試算表全班英雄榜」</span>
-            <button class="copy-btn" data-copy-code>複製提示詞</button>
+            <button type="button" class="copy-btn" data-copy-code>
+              <svg class="ico" aria-hidden="true"><use href="#ico-copy" /></svg>
+              <span>複製提示詞</span>
+            </button>
           </div>
           <pre>請幫我為這套數學遊戲加上「全班跨平板即時英雄榜」功能，免租伺服器：
 1. 請另外產出一份 `google_apps_script.js` 後端範本（使用 LockService 防止全班同時送出成績時撞車，並保留每位學生的個人最高分）。
@@ -669,7 +858,7 @@
           <article class="classroom-card">
             <div class="skill-top">
               <div class="skill-title-wrap">
-                <div class="skill-icon">🪙</div>
+                <div class="skill-icon" aria-hidden="true">🪙</div>
                 <div>
                   <h4 class="skill-title">1. 班級電子存摺（羚藝汽泡水電子存摺）</h4>
                   <div class="skill-id">架構：GitHub Pages 前端 ＋ Google Apps Script 純 JSON API 試算表後端</div>
@@ -698,7 +887,7 @@
           <article class="classroom-card music">
             <div class="skill-top">
               <div class="skill-title-wrap">
-                <div class="skill-icon">🎵</div>
+                <div class="skill-icon" aria-hidden="true">🎵</div>
                 <div>
                   <h4 class="skill-title">2. 班級雲端 YouTube 點歌坊（教室點歌軟體）</h4>
                   <div class="skill-id">架構：大螢幕播放端 ＋ 學生手機掃碼點歌端 ＋ 老師行動遙控後台（MQTT 即時同步）</div>
@@ -726,7 +915,7 @@
           <article class="classroom-card homework">
             <div class="skill-top">
               <div class="skill-title-wrap">
-                <div class="skill-icon">📋</div>
+                <div class="skill-icon" aria-hidden="true">📋</div>
                 <div>
                   <h4 class="skill-title">3. 班級作業佈告欄（極速盤點作業網頁）</h4>
                   <div class="skill-id">架構：純前端單頁應用 ＋ LocalStorage 離線存檔 ＋（選配）Padlet 聯絡簿自動同步 / Firebase 雲端</div>
@@ -756,7 +945,10 @@
         <div class="code-block">
           <div class="code-header">
             <span>💬 給同事的延伸應用：請 Antigravity 幫你客製專屬班級經營網頁的提示詞範本</span>
-            <button class="copy-btn" data-copy-code>複製提示詞</button>
+            <button type="button" class="copy-btn" data-copy-code>
+              <svg class="ico" aria-hidden="true"><use href="#ico-copy" /></svg>
+              <span>複製提示詞</span>
+            </button>
           </div>
           <pre>請幫我設計一個給國小班級電子白板使用的「班級經營工具」單頁網站（HTML/CSS/JS），需求如下：
 1. 班級共 26 位學生，按鈕與座號方塊要大且適合觸控。
@@ -783,17 +975,18 @@
           </div>
           <div class="info-card">
             <h4>步驟二：解壓縮技能包或貼上範本並重啟</h4>
-            <p>在本網站任一張技能卡片直接點擊 <strong>「📦 下載完整技能包 (.zip)」</strong>（或 <a href="./downloads/all-teacher-skills.zip" download>一鍵下載全部 13 套技能合輯</a>），將壓縮包解壓縮至 <code class="inline">%USERPROFILE%\.gemini\config\skills\</code>，或點擊 <strong>「📄 複製 / 下載 SKILL.md 範本」</strong> 貼入對應資料夾，重新開啟 Antigravity 即可用斜線指令喚醒使用！</p>
+            <p>在本網站任一張技能卡片直接點擊 <strong>「下載完整技能包 (.zip)」</strong>（或 <a href="./downloads/all-teacher-skills.zip" download>一鍵下載全部 13 套技能合輯</a>），將壓縮包解壓縮至 <code class="inline">%USERPROFILE%\.gemini\config\skills\</code>，或點擊 <strong>「複製 / 下載 SKILL.md 範本」</strong> 貼入對應資料夾，重新開啟 Antigravity 即可用斜線指令喚醒使用！</p>
           </div>
         </div>
 
         <h3>9.2 校內社群推廣避坑清單（FAQ）</h3>
-        <div class="table-wrap">
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="faqTableCaption">
           <table>
+            <caption id="faqTableCaption" class="visually-hidden">校內社群推廣避坑清單與常見問題解答</caption>
             <thead>
               <tr>
-                <th>常見問題</th>
-                <th>朕 老師實戰解法</th>
+                <th scope="col">常見問題</th>
+                <th scope="col">朕 老師實戰解法</th>
               </tr>
             </thead>
             <tbody>
@@ -856,28 +1049,41 @@
   <!-- Mobile Bottom Sticky Navigation -->
   <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="手機版章節快速切換"></nav>
 
-  <!-- Skill Template Modal -->
-  <div class="modal-backdrop" id="skillModalBackdrop" role="dialog" aria-modal="true">
-    <div class="modal">
-      <div class="modal-head">
-        <div>
-          <h3 id="skillModalTitle">SKILL.md 範本</h3>
-          <div id="skillModalPath" style="font-size:12px;color:var(--text-muted);margin-top:2px;"></div>
-        </div>
-        <button class="btn" id="skillModalClose">✕ 關閉</button>
+  <!-- Skill Template Modal (Native <dialog>) -->
+  <dialog class="modal" id="skillModal" aria-labelledby="skillModalTitle" closedby="any">
+    <div class="modal-head">
+      <div>
+        <h2 class="modal-title" id="skillModalTitle">SKILL.md 範本</h2>
+        <div id="skillModalPath" class="modal-path"></div>
       </div>
-      <div class="modal-body">
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
-          <button class="btn btn-primary" id="skillModalCopyBtn">📋 一鍵複製完整 SKILL.md</button>
-          <button class="btn btn-accent" id="skillModalDownloadBtn">⬇️ 下載 SKILL.md 檔案</button>
-        </div>
-        <div class="code-block">
-          <div class="code-header"><span>SKILL.md（已去敏可直接使用）</span></div>
-          <pre id="skillModalCode"></pre>
-        </div>
+      <button type="button" class="btn" id="skillModalClose" autofocus>
+        <svg class="ico" aria-hidden="true"><use href="#ico-close" /></svg>
+        <span>關閉</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-install-tip">
+        <strong>💡 免找隱藏資料夾小撇步：</strong>按 <kbd>Win</kbd> + <kbd>R</kbd> 貼上上方路徑即可打開資料夾；或更簡單——<strong>直接把下載的 <code class="inline">.zip</code> 拖進 Antigravity 對話框說：「幫我安裝這個技能」！</strong>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-primary" id="skillModalCopyBtn">
+          <svg class="ico" aria-hidden="true"><use href="#ico-copy" /></svg>
+          <span>一鍵複製完整 SKILL.md</span>
+        </button>
+        <button type="button" class="btn btn-accent" id="skillModalDownloadBtn">
+          <svg class="ico" aria-hidden="true"><use href="#ico-download" /></svg>
+          <span>下載 SKILL.md 檔案</span>
+        </button>
+        <span class="copy-status" id="skillModalCopyStatus" role="status"></span>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span>SKILL.md（已去敏可直接使用）</span></div>
+        <pre id="skillModalCode"></pre>
       </div>
     </div>
-  </div>
+  </dialog>
+
+  <span class="visually-hidden" id="liveAnnouncer" role="status" aria-live="polite"></span>
 
   <script src="skills-data.js"></script>
   <script src="app.js"></script>
